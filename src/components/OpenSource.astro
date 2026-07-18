@@ -17,107 +17,118 @@ const pillars = [
 ];
 ---
 
-<section id="open-source" class="section section--alt os">
-  <div class="container">
-    <div class="os-grid">
-      <div class="os-head" data-reveal>
-        <p class="eyebrow">Open source</p>
-        <h2>Open by default.<br />Yours to keep.</h2>
-        <p class="lead">This isn’t a free tier with a trapdoor. The standard version of everything here is open, and the specs beneath it are open too.</p>
-        <div class="os-cta">
-          <a class="btn btn-primary" href={SITE.githubOrg} rel="noopener" target="_blank">Star on GitHub</a>
-          <a class="btn btn-ghost" href="#principles">Read the principles</a>
-        </div>
+<section id="open-source" class="os">
+  <!-- Full-width photo hero: the kitesurfer sits behind the header + CTA, no
+       wash. Dark text gets a soft light halo for legibility instead of dimming
+       the photo. -->
+  <div class="os-hero">
+    <div class="os-hero-bg" aria-hidden="true"></div>
+    <div class="container os-hero-inner" data-reveal>
+      <p class="eyebrow">Open source</p>
+      <h2>Open by default.<br />Yours to keep.</h2>
+      <p class="os-lede">This isn’t a free tier with a trapdoor. The standard version of everything here is open, and the specs beneath it are open too.</p>
+      <div class="os-cta">
+        <a class="btn btn-primary" href={SITE.githubOrg} rel="noopener" target="_blank">Star on GitHub</a>
+        <a class="btn btn-ghost os-ghost" href="#principles">Read the principles</a>
       </div>
+    </div>
+  </div>
 
-      <div class="os-pillars">
+  <div class="os-pillars-wrap">
+    <div class="container">
+      <div class="os-pillars-row">
         {
           pillars.map((p, i) => (
             <article class="os-pillar" data-reveal data-reveal-delay={String(i * 80)}>
               <span class="os-mark" aria-hidden="true"></span>
-              <div>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-              </div>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
             </article>
           ))
         }
       </div>
     </div>
-
-    <figure class="os-photo" data-reveal>
-      <img
-        src="/photos/open-source-bg.jpg"
-        alt="A lone kitesurfer riding across a vast open ocean, kite aloft"
-        loading="lazy"
-        decoding="async"
-        width="1600"
-        height="1133"
-      />
-    </figure>
   </div>
 </section>
 
 <style>
-  /* The kitesurfer photo as a clean full-width band — vivid, no wash, its own
-     element (not behind text), so it never fights legibility or stretches on
-     mobile. Fixed aspect ratios keep the kite + rider in frame at any width. */
-  .os-photo {
-    margin-top: clamp(2.5rem, 5vw, 4rem);
-    border-radius: var(--radius);
+  .os-hero {
+    position: relative;
     overflow: hidden;
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow);
-  }
-  .os-photo img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 24 / 9;
-    object-fit: cover;
-    object-position: center 32%;
-  }
-  @media (max-width: 720px) {
-    .os-photo img {
-      aspect-ratio: 16 / 10;
-      object-position: center 40%;
-    }
-  }
-  .os-grid {
-    display: grid;
-    grid-template-columns: 0.9fr 1.1fr;
-    gap: clamp(2rem, 5vw, 4rem);
+    isolation: isolate;
+    display: flex;
     align-items: center;
+    min-height: clamp(400px, 44vw, 520px);
+    padding-block: clamp(2.75rem, 6vw, 4.5rem);
+  }
+  .os-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: url('/photos/open-source-bg.jpg') center 34% / cover no-repeat;
+  }
+  .os-hero-inner {
+    max-width: 100%;
+  }
+  /* content stays on the left so the rider shows on the right */
+  .os-hero-inner > * {
+    max-width: 34ch;
+  }
+  .os-hero .eyebrow {
+    color: var(--color-accent-strong);
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.65);
+  }
+  .os-hero h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-text);
+    text-shadow: 0 1px 16px rgba(255, 255, 255, 0.7), 0 1px 2px rgba(255, 255, 255, 0.6);
+  }
+  .os-lede {
+    font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+    line-height: 1.55;
+    color: var(--color-text);
+    margin: 0;
+    text-shadow: 0 1px 12px rgba(255, 255, 255, 0.8), 0 1px 2px rgba(255, 255, 255, 0.7);
   }
   .os-cta {
     display: flex;
     flex-wrap: wrap;
     gap: 0.8rem;
-    margin-top: 1.6rem;
+    margin-top: 1.7rem;
   }
-  .os-pillars {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
+  /* ghost button needs a backdrop over the photo */
+  .os-ghost {
+    background: rgba(255, 255, 255, 0.72);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+    border-color: rgba(255, 255, 255, 0.9);
+  }
+  .os-ghost:hover {
+    background: #fff;
+  }
+
+  .os-pillars-wrap {
+    background: var(--color-bg-2);
+    padding-block: clamp(2.5rem, 5vw, 3.75rem);
+  }
+  .os-pillars-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.75rem 2.5rem;
   }
   .os-pillar {
-    display: flex;
-    gap: 1rem;
-    padding: 1.35rem 0;
-    border-top: 1px solid var(--color-border);
-  }
-  .os-pillar:first-child {
-    border-top: 0;
+    padding: 0;
   }
   .os-mark {
-    flex: 0 0 auto;
-    width: 12px;
-    height: 12px;
-    margin-top: 0.4rem;
+    display: block;
+    width: 13px;
+    height: 13px;
+    margin-bottom: 0.8rem;
     border-radius: 3px;
     background: var(--grad-accent);
   }
   .os-pillar h3 {
-    margin: 0 0 0.35rem;
+    margin: 0 0 0.4rem;
     font-size: 1.12rem;
   }
   .os-pillar p {
@@ -125,9 +136,17 @@ const pillars = [
     color: var(--color-text-muted);
     font-size: 0.96rem;
   }
-  @media (max-width: 860px) {
-    .os-grid {
+
+  @media (max-width: 760px) {
+    .os-hero-inner > * {
+      max-width: none;
+    }
+    .os-hero-bg {
+      background-position: center 42%;
+    }
+    .os-pillars-row {
       grid-template-columns: 1fr;
+      gap: 1.6rem;
     }
   }
 </style>
