@@ -34,24 +34,6 @@ Images are stored optimized in `public/photos/` and `public/og/`.
 | `photos/principles/open.jpg` | Open by default | Sander Breneman | https://unsplash.com/photos/kJiPUr1KQSE | Unsplash License |
 | `photos/principles/reuse.jpg` | Build once, reuse everywhere | Barn Images | https://unsplash.com/photos/t5YUoHW6zRo | Unsplash License |
 
-### Tool card backgrounds (catalogue — "Every tool, on its shelf")
-
-Used as faint, desaturated background textures behind each tool card.
-
-| File | Tool | Photographer | Source (canonical) | License |
-|------|------|--------------|--------------------|---------|
-| `photos/tools/specscore.jpg` | SpecScore | Shubham Dhage | https://unsplash.com/photos/OHepXopzU6Y | Unsplash License |
-| `photos/tools/modelspec.jpg` | ModelSpec | Logan Voss | https://unsplash.com/photos/j3pdBwNOTio | Unsplash License |
-| `photos/tools/graphspec.jpg` | GraphSpec | BoliviaInteligente | https://unsplash.com/photos/s5C_4tMY8fA | Unsplash License |
-| `photos/tools/codegrapher.jpg` | CodeGrapher | Pachon in Motion | https://www.pexels.com/photo/30547618/ | Pexels License |
-| `photos/tools/dtql.jpg` | DTQL | Rostislav Uzunov | https://unsplash.com/photos/Jnma4hh2vUs | Unsplash License |
-| `photos/tools/ingitdb.jpg` | inGitDB | cottonbro studio | https://www.pexels.com/photo/8371705/ | Pexels License |
-| `photos/tools/openvaultdb.jpg` | OpenVaultDB | Craig Whitehead | https://unsplash.com/photos/E4-VWJ8jbpc | Unsplash License |
-| `photos/tools/polymodel.jpg` | PolyModel | Logan Voss | https://unsplash.com/photos/5SawiOD2-8I | Unsplash License |
-| `photos/tools/dalgo.jpg` | DALgo | Lucas van Oort | https://unsplash.com/photos/Cm_APC_oD-w | Unsplash License |
-| `photos/tools/bots-go-framework.jpg` | bots-go-framework | Miguel Á. Padriñán | https://www.pexels.com/photo/1111369/ | Pexels License |
-| `photos/tools/wb.jpg` | WB | Brett Sayles | https://www.pexels.com/photo/4508751/ | Pexels License |
-
 ### Section backgrounds
 
 | File | Used in | Photographer | Source (canonical) | License |
