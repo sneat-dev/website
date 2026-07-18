@@ -1,18 +1,26 @@
 # Photo credits
 
 All photography on sneat.dev is royalty-free and licensed for commercial use.
-Sourced from [Unsplash](https://unsplash.com) under the
-[Unsplash License](https://unsplash.com/license) (free for commercial use,
-no attribution required — recorded here anyway, as a matter of practice).
+Sourced from [Unsplash](https://unsplash.com/license) and
+[Pexels](https://www.pexels.com/license/) — both free for commercial use with no
+attribution required, recorded here anyway as a matter of practice.
 
 Images are stored optimized in `public/photos/` and `public/og/`.
 
 | File | Used in | Photographer | Source (canonical) | License |
 |------|---------|--------------|--------------------|---------|
-| `photos/whiteboard.jpg` | Homepage — "The work" band | Vitaly Gariev | https://unsplash.com/photos/rgKX4o2xSqI | Unsplash License |
-| `photos/debug.jpg` | Homepage — "The work" band | Bernd Dittrich | https://unsplash.com/photos/gflXHUC_f3w | Unsplash License |
-| `photos/codebase.jpg` | Homepage — "The work" band | Abu Saeid | https://unsplash.com/photos/fdGTi4IcaJc | Unsplash License |
 | `photos/origin.jpg` | Homepage — "Why Sneat" band | Jakub Żerdzicki | https://unsplash.com/photos/FjtWczJWRlc | Unsplash License |
+
+### Problem cards ("Sound familiar?")
+
+| File | Problem | Photographer | Source (canonical) | License |
+|------|---------|--------------|--------------------|---------|
+| `photos/problems/doc-rot.jpg` | Documentation rot | Gérard GRIFFAY | https://unsplash.com/photos/YsBdqVgCDVI | Unsplash License |
+| `photos/problems/fragmentation.jpg` | Context fragmentation | Brandi Redd | https://unsplash.com/photos/aJTiW00qqtI | Unsplash License |
+| `photos/problems/ai-context.jpg` | AI without context | Pascal Debrunner | https://unsplash.com/photos/oc4Xl315Q8I | Unsplash License |
+| `photos/problems/complexity.jpg` | Runaway complexity | Kier in Sight Archives | https://unsplash.com/photos/3Nwt6w-KU3E | Unsplash License |
+| `photos/problems/own-data.jpg` | Data you don’t control | Lucas van Oort | https://unsplash.com/photos/ynFrMaSiau8 | Unsplash License |
+| `photos/problems/chaos.jpg` | Engineering chaos | Chu CHU | https://unsplash.com/photos/EiKKUU7FR4o | Unsplash License |
 
 ### Principle cards ("Opinions, earned by shipping")
 
