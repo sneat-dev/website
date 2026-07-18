@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config';
+---
+
+<BaseLayout title={`${SITE.name} — ${SITE.headline}`} description={SITE.description}>
+  <section class="section container">
+    <h1>{SITE.headline}</h1>
+    <p class="lead">{SITE.headlineSub}</p>
+    <p><a class="btn btn-primary" href={SITE.cliHref}>{SITE.cta}</a></p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+/**
+ * sneat.dev layout — a thin wrapper over @sneat/astro's BaseLayout that injects
+ * this site's fonts, global styles, i18n instance, SiteMeta and SiteChrome.
+ * Pages just import this and pass their own title/description.
+ */
+import '@fontsource-variable/space-grotesk/index.css';
+import '@fontsource-variable/inter/index.css';
+import '@fontsource-variable/jetbrains-mono/index.css';
+import '../styles/global.css';
+import SneatBaseLayout from '@sneat/astro/layouts/BaseLayout.astro';
+import { i18n } from '../i18n/config';
+import { getSite, getChrome } from '../data/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  /** Nav floats over a photographic/dark hero. */
+  transparentNav?: boolean;
+  noindex?: boolean;
+  ogImage?: string;
+}
+
+const { title, description, transparentNav = false, noindex = false, ogImage } = Astro.props;
+const site = getSite();
+---
+
+<SneatBaseLayout
+  i18n={i18n}
+  site={site}
+  chrome={getChrome()}
+  locale="en"
+  title={title}
+  description={description ?? site.description ?? ''}
+  transparentNav={transparentNav}
+  noindex={noindex}
+  ogImage={ogImage}
+  langSwitcher={false}
+>
+  <slot name="head" slot="head" />
+  <slot />
+  <slot name="scripts" slot="scripts" />
+</SneatBaseLayout>

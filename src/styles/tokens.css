@@ -1,0 +1,61 @@
+/**
+ * sneat.dev brand tokens — mapped onto the @sneat/astro `--color-*` contract so
+ * the shared chrome (Header, Footer, LangSwitcher, SeoHead) themes for free.
+ * Declared on :root (higher specificity than the contract's :where(:root)
+ * defaults), so these win regardless of import order.
+ *
+ * Palette: a developer-forward light theme. Indigo/violet primary for the
+ * "structure" the platform is about; a warm ember secondary for the "forged in
+ * the fire" origin. Distinct from the consumer Sneat teal on purpose.
+ */
+:root {
+  /* Surfaces — cool near-white with a faint indigo tint */
+  --color-bg: #ffffff;
+  --color-bg-2: #f7f8fc;
+  --color-bg-3: #eceef8;
+  --color-surface: #ffffff;
+  --color-soft: #f5f6fb;
+  --color-border: #e5e7f2;
+
+  /* Ink — deep indigo-slate */
+  --color-text: #14152b;
+  --color-text-muted: #4b4d68;
+  --color-text-faint: #7d7f97;
+
+  /* Accent — indigo / violet */
+  --color-accent: #5b53f0;
+  --color-accent-strong: #443ad6;
+  --color-accent-soft: #e9e7fd;
+  --color-accent-text: #ffffff;
+
+  --color-danger: #d64550;
+
+  /* Site-specific extras (not part of the shared contract) */
+  --ember: #ff6a3d;
+  --ember-strong: #ec4d1e;
+  --ember-soft: #ffe7dd;
+  --violet: #8b5cf6;
+  --ink-950: #0b0c1a;
+  --grad-fire: linear-gradient(118deg, #5b53f0 0%, #8b5cf6 44%, #ff6a3d 100%);
+  --grad-accent: linear-gradient(118deg, #5b53f0 0%, #8b5cf6 100%);
+  --code-bg: #0e0f22;
+  --code-fg: #e7e8f6;
+  --code-border: #24264a;
+
+  /* Type */
+  --font-display: 'Space Grotesk Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: var(--font-sans);
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Geometry */
+  --radius: 16px;
+  --radius-sm: 10px;
+  --radius-pill: 999px;
+  --shadow: 0 24px 60px -24px rgba(24, 22, 74, 0.26);
+  --shadow-sm: 0 2px 10px rgba(24, 22, 74, 0.08);
+
+  --maxw: 1160px;
+  --container: min(1160px, calc(100vw - 44px));
+  --container-narrow: min(760px, calc(100vw - 44px));
+}

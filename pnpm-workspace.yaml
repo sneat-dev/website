@@ -1,0 +1,10 @@
+# Standalone project (not part of a monorepo); this file only carries pnpm
+# policy knobs. esbuild/sharp/workerd ship platform binaries via their own build
+# scripts — trusted, and needed for astro build + wrangler.
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+# @sneat/astro was just published; exclude it from the minimum-release-age gate.
+minimumReleaseAgeExclude:
+  - '@sneat/astro@0.1.0'

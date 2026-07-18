@@ -1,0 +1,21 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "sneat-dev-website",
+  "compatibility_date": "2026-07-18",
+  "workers_dev": true,
+
+  // Static-assets-only Worker (no `main`): sneat.dev v1 is a static site, so
+  // Cloudflare serves the built `./dist` directly. Add a `main` worker later if
+  // edge logic (redirects, locale routing) is ever needed.
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+
+  // The apex `sneat.dev` is attached to this Worker as a Cloudflare **Custom
+  // Domain** (dashboard/API — the org-wide CI token lacks Zone:DNS:Edit, the
+  // same constraint documented across the fleet). `www.sneat.dev` gets a zone
+  // Redirect Rule → apex (301), per the house rule, instead of a second custom
+  // domain serving duplicate content.
+}
