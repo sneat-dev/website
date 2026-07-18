@@ -54,20 +54,22 @@ const pillars = [
     overflow: hidden;
     isolation: isolate;
   }
-  /* Full-bleed light background photo (window-light texture), washed to a faint
-     texture so dark text stays crisp. Warms the section without a card. */
+  /* Full-bleed background: a lone kitesurfer in a vast, bright ocean — openness.
+     Light overlay so the sea and kiter read while dark text stays crisp. */
   .os-bg {
     position: absolute;
     inset: 0;
     z-index: -1;
     background-image:
-      linear-gradient(105deg,
-        color-mix(in srgb, var(--color-bg-2) 92%, transparent) 0%,
-        color-mix(in srgb, var(--color-bg-2) 82%, transparent) 55%,
-        color-mix(in srgb, var(--color-bg-2) 70%, transparent) 100%),
+      linear-gradient(
+        180deg,
+        color-mix(in srgb, var(--color-bg-2) 80%, transparent) 0%,
+        color-mix(in srgb, var(--color-bg-2) 66%, transparent) 52%,
+        color-mix(in srgb, var(--color-bg-2) 82%, transparent) 100%
+      ),
       url('/photos/open-source-bg.jpg');
     background-size: cover, cover;
-    background-position: center, center 30%;
+    background-position: center, center 56%;
   }
   .os-grid {
     display: grid;

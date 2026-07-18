@@ -38,7 +38,7 @@ Images are stored optimized in `public/photos/` and `public/og/`.
 
 | File | Used in | Photographer | Source (canonical) | License |
 |------|---------|--------------|--------------------|---------|
-| `photos/open-source-bg.jpg` | Homepage — "Open by default" band | Daniel &amp; Hannah Snipes | https://www.pexels.com/photo/29973444/ | Pexels License |
+| `photos/open-source-bg.jpg` | Homepage — "Open by default" band (lone kitesurfer, vast ocean) | Kristaps Ungurs | https://unsplash.com/photos/VllG6IhEI78 | Unsplash License |
 | `photos/why-fire.jpg` | Homepage — "Forged in the fire" header (esp. mobile) | Matt Palmer | https://unsplash.com/photos/kbTp7dBzHyY | Unsplash License |
 | `photos/why-flames.jpg` | Homepage — "proving ground" wall (bright fire behind frosted tags) | Wolfgang Hasselmann | https://unsplash.com/photos/DrjS1pQXTlo | Unsplash License |
 
