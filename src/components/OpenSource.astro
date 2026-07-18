@@ -24,8 +24,10 @@ const pillars = [
   <div class="os-hero">
     <div class="os-hero-bg" aria-hidden="true"></div>
     <div class="container os-hero-inner" data-reveal>
-      <p class="eyebrow">Open source</p>
-      <h2>Open by default.<br />Yours to keep.</h2>
+      <div class="os-hero-head">
+        <p class="eyebrow">Open source</p>
+        <h2>Open by default.<br />Yours to keep.</h2>
+      </div>
       <p class="os-lede">This isn’t a free tier with a trapdoor. The standard version of everything here is open, and the specs beneath it are open too.</p>
       <div class="os-cta">
         <a class="btn btn-primary" href={SITE.githubOrg} rel="noopener" target="_blank">Star on GitHub</a>
@@ -138,35 +140,50 @@ const pillars = [
   }
 
   @media (max-width: 760px) {
-    /* The photo always shows its full height here (narrow box vs. landscape
-       photo means cover scales off height) — kite sits ~18% down, the rider
-       ~50% down, and everything below that is open water. So instead of
-       centering the text over the rider, push it to the bottom, into the
-       water, and give the box enough height that the text block doesn't
-       reach back up into the kite/rider band. Flip the photo too, per
-       request — mirrors the rider off dead-center. */
+    /* Cropping-by-cover is what kept cutting the kite or the rider out of
+       frame — no crop math gets that right at every viewport. Instead show
+       the photo at its native aspect ratio, full width, nothing cropped,
+       as its own band between the header and the lede (not overlaid), so
+       there's no way for text to land on top of the rider or the kite. */
     .os-hero {
-      min-height: clamp(560px, 155vw, 700px);
-      align-items: flex-end;
-      padding-block: 1.5rem 2.1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      overflow: visible;
+      min-height: 0;
+      padding-block: 1.5rem 0;
     }
     .os-hero-bg {
+      position: relative;
+      inset: auto;
+      z-index: auto;
+      order: 2;
+      width: 100%;
+      aspect-ratio: 1600 / 1066;
+      background: url('/photos/open-source-bg.jpg') center / 100% auto no-repeat;
       transform: scaleX(-1);
+      margin-block: 1.25rem;
     }
-    .os-hero-inner > * {
+    .os-hero-inner {
+      display: contents;
+    }
+    .os-hero-head {
+      order: 1;
       max-width: none;
+      padding-inline: 22px;
+    }
+    .os-lede {
+      order: 3;
+      max-width: none;
+      padding-inline: 22px;
+    }
+    .os-hero .eyebrow,
+    .os-hero h2,
+    .os-lede {
+      text-shadow: none;
     }
     .os-cta {
-      flex-wrap: nowrap;
-      gap: 0.4rem;
-    }
-    .os-cta .btn {
-      flex: 0 1 auto;
-      min-width: 0;
-      justify-content: center;
-      text-align: center;
-      padding: 0.6rem 0.5rem;
-      font-size: 0.76rem;
+      display: none;
     }
     .os-pillars-row {
       grid-template-columns: 1fr;
