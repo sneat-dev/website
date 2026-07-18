@@ -1,0 +1,79 @@
+---
+import { SITE } from '../config';
+import Terminal from './Terminal.astro';
+---
+
+<section class="cta on-dark">
+  <div class="container cta-inner">
+    <div class="cta-copy" data-reveal>
+      <p class="eyebrow">Get started</p>
+      <h2>Start with one command.</h2>
+      <p>The unified Sneat CLI is on its way. You don’t have to wait for it — the tools stand on their own today, one static binary at a time.</p>
+      <div class="cta-btns">
+        <a class="btn btn-primary" href={SITE.cliHref}>{SITE.cta}</a>
+        <a class="btn btn-ghost" href="/products/">Browse all tools</a>
+      </div>
+    </div>
+
+    <div class="cta-term" data-reveal data-reveal-delay="100">
+      <Terminal
+        label="install"
+        lines={[
+          '<span class="c-comment"># pick a tool, ship today</span>',
+          '<span class="c-prompt">$</span> brew install <b>codegrapher</b>',
+          '<span class="c-prompt">$</span> go install <b>github.com/dal-go/dalgo</b>@latest',
+          '<span class="c-prompt">$</span> npx <b>specscore</b> spec lint',
+          '<span class="c-comment"># one CLI to tie them all — </span><span class="c-em">coming soon</span>',
+        ]}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    background: var(--ink-950);
+    color: #eef0ffea;
+    overflow: hidden;
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+    isolation: isolate;
+  }
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(560px 320px at 12% 0%, color-mix(in srgb, #5b53f0 55%, transparent), transparent 70%),
+      radial-gradient(520px 320px at 92% 100%, color-mix(in srgb, #ff6a3d 42%, transparent), transparent 70%);
+  }
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .cta-term {
+    min-width: 0;
+  }
+  .cta h2 {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .cta-copy p {
+    color: #c9caea;
+    max-width: 44ch;
+  }
+  .cta-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+  @media (max-width: 860px) {
+    .cta-inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

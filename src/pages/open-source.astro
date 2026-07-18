@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import RevealScript from '../components/RevealScript.astro';
+import { SITE } from '../config';
+
+const pillars = [
+  {
+    title: 'Open formats first',
+    body: 'SpecScore, ModelSpec and DTQL are open specifications, not proprietary file types. The format is the standard; our tools are just one implementation of it — and yours can be another.',
+  },
+  {
+    title: 'Free in the standard version',
+    body: 'Every tool is fully usable for free. This isn’t a trial with a trapdoor. Some tools may add hosted or premium capabilities later; the standard, self-hostable core stays open.',
+  },
+  {
+    title: 'You own your data',
+    body: 'Context lives in your repository (inGitDB) and your vault (OpenVaultDB) — git-native, versioned, auditable, portable. No lock-in is a design constraint, not a marketing line.',
+  },
+  {
+    title: 'Dogfooded, not theoretical',
+    body: 'We use every one of these tools to build the Sneat ecosystem. Bugs hurt us first. That’s the only quality bar we fully trust.',
+  },
+];
+---
+
+<BaseLayout
+  title="Open Source — Sneat.dev"
+  description="Sneat's developer tools are open by default: open specifications, a free standard tier, git-native data you own, and a toolkit dogfooded across a real ecosystem."
+>
+  <PageHead
+    eyebrow="Open source"
+    title="Open by default. Yours to keep."
+    lead="The standard version of everything here is open — and the specifications beneath it are open too. Here’s what that actually means, and how to get involved."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="pillars">
+        {
+          pillars.map((p, i) => (
+            <article class="pillar card" data-reveal data-reveal-delay={String((i % 2) * 70)}>
+              <span class="pillar-mark" aria-hidden="true"></span>
+              <h2>{p.title}</h2>
+              <p>{p.body}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ink contribute">
+    <div class="container contribute-inner">
+      <div data-reveal>
+        <p class="eyebrow">Contribute</p>
+        <h2>Built in the open, better with you.</h2>
+        <p class="lead">
+          Every tool lives on GitHub under the <code>sneat-dev</code> and partner
+          orgs. Open an issue, propose a spec change, or ship a PR. The specs
+          evolve fastest when the people using them push back.
+        </p>
+        <div class="contribute-cta">
+          <a class="btn btn-primary" href={SITE.githubOrg} rel="noopener" target="_blank">Explore on GitHub</a>
+          <a class="btn btn-ghost" href="/products/">Browse the tools</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .pillars {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+  .pillar {
+    padding: 1.7rem 1.8rem;
+  }
+  .pillar-mark {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 4px;
+    background: var(--grad-accent);
+    margin-bottom: 1rem;
+  }
+  .pillar h2 {
+    font-size: 1.3rem;
+    margin: 0 0 0.6rem;
+  }
+  .pillar p {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+  .contribute-inner {
+    max-width: 60ch;
+  }
+  .contribute code {
+    background: #ffffff1f;
+    color: #d9dbff;
+  }
+  .contribute-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+  @media (max-width: 720px) {
+    .pillars {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

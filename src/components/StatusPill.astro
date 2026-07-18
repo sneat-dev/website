@@ -1,0 +1,57 @@
+---
+import type { Status } from '../data/products';
+import { STATUS_LABEL } from '../data/products';
+
+interface Props {
+  status: Status;
+}
+const { status } = Astro.props;
+---
+
+<span class:list={['status', `status--${status}`]} title={STATUS_LABEL[status]}>
+  <span class="dot" aria-hidden="true"></span>{STATUS_LABEL[status]}
+</span>
+
+<style>
+  .status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.22rem 0.55rem 0.22rem 0.45rem;
+    border-radius: var(--radius-pill);
+    background: var(--pill-bg, var(--color-bg-3));
+    color: var(--pill-fg, var(--color-text-muted));
+    border: 1px solid var(--pill-bd, transparent);
+    white-space: nowrap;
+  }
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--pill-dot, currentColor);
+  }
+  .status--stable {
+    --pill-bg: #e5f6ec;
+    --pill-fg: #1c7a45;
+    --pill-dot: #22a35a;
+  }
+  .status--beta {
+    --pill-bg: var(--color-accent-soft);
+    --pill-fg: var(--color-accent-strong);
+    --pill-dot: var(--color-accent);
+  }
+  .status--spec {
+    --pill-bg: #efeafd;
+    --pill-fg: #6d3fc4;
+    --pill-dot: #8b5cf6;
+  }
+  .status--coming-soon {
+    --pill-bg: var(--ember-soft);
+    --pill-fg: var(--ember-strong);
+    --pill-dot: var(--ember);
+  }
+</style>

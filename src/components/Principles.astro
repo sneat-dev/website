@@ -1,0 +1,62 @@
+---
+import { PRINCIPLES } from '../data/principles';
+---
+
+<section id="principles" class="section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">How we build</p>
+      <h2>Opinions, earned by shipping.</h2>
+      <p>We’re confident about these because we’ve paid for getting them wrong. We’re humble about them because the work is never finished.</p>
+    </div>
+
+    <div class="prin-grid">
+      {
+        PRINCIPLES.map((p, i) => (
+          <article class="prin" data-reveal data-reveal-delay={String((i % 3) * 70)}>
+            <span class="prin-mark mono">0{i + 1}</span>
+            <h3>{p.title}</h3>
+            <p>{p.body}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .prin-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem 2.6rem;
+  }
+  .prin {
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .prin-mark {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--color-accent);
+  }
+  .prin h3 {
+    margin: 0.5rem 0 0.5rem;
+    font-size: 1.18rem;
+  }
+  .prin p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.98rem;
+  }
+  @media (max-width: 860px) {
+    .prin-grid {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 2rem;
+    }
+  }
+  @media (max-width: 560px) {
+    .prin-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import ProductGrid from '../../components/ProductGrid.astro';
+import RevealScript from '../../components/RevealScript.astro';
+import { PRODUCTS } from '../../data/products';
+
+const total = PRODUCTS.length;
+---
+
+<BaseLayout
+  title="Products — Sneat.dev"
+  description="The Sneat.dev toolkit: specifications, code intelligence, git-native data, libraries and the WB CLI — organised by the context stack."
+>
+  <PageHead
+    eyebrow="The toolkit"
+    title="Every tool, on its shelf."
+    lead={`${total} open-source tools, each useful on its own — grouped by the question it answers. Many carry their own brand and docs; this is the shared front door.`}
+  >
+    <p class="head-note mono">
+      Organised by the <a href="/#stack">context stack</a> ·
+      Specify → Understand → Store → Build → Workbench
+    </p>
+  </PageHead>
+
+  <section class="section">
+    <div class="container">
+      <ProductGrid />
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .head-note {
+    font-size: 0.82rem;
+    color: var(--color-text-faint);
+  }
+  .head-note a {
+    color: var(--color-accent-strong);
+  }
+</style>

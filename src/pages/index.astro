@@ -1,12 +1,52 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Shift from '../components/Shift.astro';
+import Problems from '../components/Problems.astro';
+import Principles from '../components/Principles.astro';
+import ContextStack from '../components/ContextStack.astro';
+import ProductGrid from '../components/ProductGrid.astro';
+import WhySneat from '../components/WhySneat.astro';
+import OpenSource from '../components/OpenSource.astro';
+import CtaBand from '../components/CtaBand.astro';
+import RevealScript from '../components/RevealScript.astro';
 import { SITE } from '../config';
 ---
 
-<BaseLayout title={`${SITE.name} — ${SITE.headline}`} description={SITE.description}>
-  <section class="section container">
-    <h1>{SITE.headline}</h1>
-    <p class="lead">{SITE.headlineSub}</p>
-    <p><a class="btn btn-primary" href={SITE.cliHref}>{SITE.cta}</a></p>
+<BaseLayout
+  title={`${SITE.name} — ${SITE.headline}`}
+  description={SITE.description}
+  transparentNav
+>
+  <Hero />
+  <Shift />
+  <Problems />
+  <Principles />
+  <ContextStack />
+
+  <section id="products" class="section">
+    <div class="container">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">The toolkit</p>
+        <h2>Every tool, on its shelf.</h2>
+        <p>Independent, open-source, and useful on their own — grouped by the question each answers. Many carry their own brand and docs; this is the shared front door.</p>
+      </div>
+      <ProductGrid />
+    </div>
   </section>
+
+  <WhySneat />
+  <OpenSource />
+  <CtaBand />
+
+  <RevealScript slot="scripts" />
 </BaseLayout>
+
+<style>
+  .center {
+    text-align: center;
+  }
+  #products .section-head.center p {
+    margin-inline: auto;
+  }
+</style>

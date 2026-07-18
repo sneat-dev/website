@@ -1,0 +1,58 @@
+---
+import { LAYERS, productsInLayer } from '../data/products';
+import ProductCard from './ProductCard.astro';
+
+interface Props {
+  /** Show the layer question under each layer heading. */
+  showQuestions?: boolean;
+}
+const { showQuestions = true } = Astro.props;
+---
+
+<div class="pgroups">
+  {
+    LAYERS.map((layer) => (
+      <section class="pgroup" data-reveal>
+        <header class="pgroup-head">
+          <h3>{layer.name}</h3>
+          {showQuestions && <p class="pgroup-q mono">{layer.question}</p>}
+        </header>
+        <div class="pgroup-grid">
+          {productsInLayer(layer.id).map((p) => (
+            <ProductCard product={p} />
+          ))}
+        </div>
+      </section>
+    ))
+  }
+</div>
+
+<style>
+  .pgroups {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(2rem, 4vw, 3rem);
+  }
+  .pgroup-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    margin-bottom: 1.1rem;
+    padding-bottom: 0.7rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .pgroup-head h3 {
+    margin: 0;
+    font-size: 1.4rem;
+  }
+  .pgroup-q {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--color-text-faint);
+  }
+  .pgroup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: 1.1rem;
+  }
+</style>

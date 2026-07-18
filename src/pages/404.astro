@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Not found — Sneat.dev" description="That page doesn’t exist." noindex>
+  <section class="nf section">
+    <div class="container-narrow">
+      <p class="eyebrow">404 · context not found</p>
+      <h1>This path didn’t resolve.</h1>
+      <p class="lead">The page you’re after moved, or never existed. The stack, at least, is still standing.</p>
+      <div class="nf-links">
+        <a class="btn btn-primary" href="/">Back to home</a>
+        <a class="btn btn-ghost" href="/products/">Browse the tools</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf {
+    padding-block: clamp(4rem, 12vh, 8rem);
+  }
+  .nf-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.8rem;
+  }
+</style>

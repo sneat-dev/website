@@ -1,0 +1,93 @@
+---
+import { PROBLEMS } from '../data/problems';
+import { layerById } from '../data/products';
+---
+
+<section id="problems" class="section section--alt">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">Sound familiar?</p>
+      <h2>You’ll recognise at least three of these.</h2>
+      <p>None of them is a tooling gap you can npm-install away in isolation. They’re all the same wound: context that’s scattered, unstructured, and rotting.</p>
+    </div>
+
+    <div class="prob-grid">
+      {
+        PROBLEMS.map((p, i) => (
+          <article class="prob card" data-reveal data-reveal-delay={String((i % 3) * 80)}>
+            <span class="prob-idx mono">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{p.name}</h3>
+            <p>{p.line}</p>
+            <a class="prob-tag" href="#stack">
+              Solved at the <b>{layerById(p.layer).name}</b> layer
+              <span aria-hidden="true">→</span>
+            </a>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .prob-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+  }
+  .prob {
+    padding: 1.5rem 1.5rem 1.35rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+  }
+  .prob-idx {
+    font-size: 0.78rem;
+    color: var(--ember-strong);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+  .prob h3 {
+    margin: 0.5rem 0 0.55rem;
+  }
+  .prob p {
+    color: var(--color-text-muted);
+    margin: 0 0 1.15rem;
+    font-size: 0.98rem;
+  }
+  .prob-tag {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.76rem;
+    color: var(--color-text-faint);
+    text-decoration: none;
+  }
+  .prob-tag b {
+    color: var(--color-accent-strong);
+    font-weight: 600;
+  }
+  .prob-tag span {
+    transition: transform 0.15s var(--ease, ease);
+  }
+  .prob-tag:hover {
+    text-decoration: none;
+  }
+  .prob-tag:hover span {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 860px) {
+    .prob-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (max-width: 560px) {
+    .prob-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

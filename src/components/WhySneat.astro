@@ -1,0 +1,128 @@
+---
+// The ecosystem these tools were forged shipping — real Sneat products. Not a
+// metric, not a logo wall of customers we don't have: the actual body of work
+// the toolkit came out of.
+const ecosystem = [
+  'Sneat.app', 'Listus', 'Debtus', 'Eventius', 'Calendarius', 'Contactus',
+  'Docus', 'Assetus', 'Bookius', 'GameBoard', 'ReQuoter', 'Schoolus',
+  'Sizeus', 'Taxus', 'Remindius', 'Localius', 'Formius', 'RSVP&nbsp;Express',
+  'Trackus', 'Yardius', 'Sneat.work', 'Sneat.club',
+];
+const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Sneat.work']);
+---
+
+<section id="why" class="section section--ink why">
+  <div class="container why-grid">
+    <div class="why-copy" data-reveal>
+      <p class="eyebrow">Why Sneat</p>
+      <h2>Forged in the fire.</h2>
+      <p>
+        Sneat is an ecosystem — a consumer super-app, a work platform, a sports
+        platform, and a long tail of focused apps, all over one shared graph.
+        Building that as a small team meant leaning hard on AI. And AI, it turns
+        out, is only as good as the context you can hand it.
+      </p>
+      <p>
+        So we built the context. Specs that don’t rot. A queryable map of the
+        code. Data that lives in Git. The libraries to reuse it all. Nothing here
+        is a science project — every tool earns its place by keeping a real,
+        growing ecosystem shippable.
+      </p>
+      <blockquote class="why-quote">
+        We didn’t set out to build developer tools. We set out to&nbsp;ship — and
+        these are what it took.
+      </blockquote>
+    </div>
+
+    <div class="why-wall" data-reveal aria-hidden="true">
+      <div class="wall-glow"></div>
+      <div class="wall-chips">
+        {
+          ecosystem.map((name) => (
+            <span class:list={['wchip', 'mono', highlight.has(name) && 'wchip--hot']} set:html={name} />
+          ))
+        }
+      </div>
+      <p class="wall-cap mono">the toolkit’s proving ground</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .why-copy p {
+    color: #c9caea;
+    font-size: 1.05rem;
+  }
+  .why h2 {
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
+  .why-quote {
+    margin: 1.8rem 0 0;
+    padding-left: 1.1rem;
+    border-left: 3px solid var(--ember);
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+    line-height: 1.35;
+    color: #fff;
+    font-style: normal;
+  }
+
+  .why-wall {
+    position: relative;
+    border: 1px solid #ffffff1a;
+    border-radius: var(--radius);
+    padding: 1.6rem;
+    background: #ffffff08;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  .wall-glow {
+    position: absolute;
+    z-index: -1;
+    width: 340px;
+    height: 340px;
+    right: -110px;
+    top: -110px;
+    border-radius: 50%;
+    background: radial-gradient(circle, #ff6a3d, transparent 68%);
+    opacity: 0.35;
+    filter: blur(40px);
+  }
+  .wall-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .wchip {
+    font-size: 0.8rem;
+    color: #b9bbe0;
+    background: #ffffff0f;
+    border: 1px solid #ffffff17;
+    border-radius: 8px;
+    padding: 0.3rem 0.6rem;
+  }
+  .wchip--hot {
+    color: #fff;
+    background: color-mix(in srgb, var(--ember) 24%, transparent);
+    border-color: color-mix(in srgb, var(--ember) 45%, transparent);
+  }
+  .wall-cap {
+    margin: 1.1rem 0 0;
+    font-size: 0.74rem;
+    color: #8a8cb6;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 900px) {
+    .why-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

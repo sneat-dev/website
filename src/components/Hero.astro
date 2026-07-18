@@ -1,0 +1,197 @@
+---
+import { SITE } from '../config';
+import Terminal from './Terminal.astro';
+---
+
+<section class="hero on-dark">
+  <div class="hero-bg" aria-hidden="true">
+    <div class="glow glow-a"></div>
+    <div class="glow glow-b"></div>
+    <div class="grid"></div>
+  </div>
+
+  <div class="container hero-inner">
+    <div class="hero-copy" data-reveal>
+      <p class="eyebrow">The Sneat Developer Platform</p>
+      <h1>The tools we built to<br /> ship <span class="grad-text">an entire ecosystem.</span></h1>
+      <p class="hero-sub">{SITE.headlineSub}</p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href={SITE.cliHref} data-track="hero-cli">{SITE.cta}</a>
+        <a class="btn btn-ghost" href="#stack">Explore the stack</a>
+      </div>
+
+      <ul class="hero-trust">
+        <li>Free &amp; open source</li>
+        <li>Dogfooded across dozens of apps</li>
+        <li>Git-native by default</li>
+      </ul>
+    </div>
+
+    <div class="hero-term" data-reveal data-reveal-delay="120">
+      <Terminal
+        label="~/your-project"
+        lines={[
+          '<span class="c-comment"># the tools, today — one static binary each</span>',
+          '<span class="c-prompt">$</span> specscore spec lint',
+          '<span class="c-out">✓ 42 acceptance criteria · 0 drift</span>',
+          '<span class="c-prompt">$</span> codegrapher query callers <span class="c-em">PayInvoice</span>',
+          '<span class="c-out">→ 7 call sites across 3 packages</span>',
+          '<span class="c-prompt">$</span> ingitdb get contacts <span class="c-comment"># data in git</span>',
+          '<span class="c-comment"># one CLI to tie them together — </span><b>coming soon</b>',
+        ]}
+      />
+    </div>
+  </div>
+
+  <a class="hero-scroll" href="#the-shift" aria-label="Scroll to read more">
+    <span></span>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--ink-950);
+    color: #eef0ffea;
+    overflow: hidden;
+    padding-top: clamp(6.5rem, 12vh, 9rem);
+    padding-bottom: clamp(3.5rem, 8vh, 6rem);
+    isolation: isolate;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.55;
+  }
+  .glow-a {
+    width: 620px;
+    height: 620px;
+    top: -220px;
+    left: -120px;
+    background: radial-gradient(circle at center, #5b53f0, transparent 70%);
+  }
+  .glow-b {
+    width: 560px;
+    height: 560px;
+    right: -160px;
+    bottom: -240px;
+    background: radial-gradient(circle at center, #ff6a3d, transparent 68%);
+    opacity: 0.4;
+  }
+  .grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 46px 46px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%);
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+
+  .hero .eyebrow {
+    color: #a9a5f7;
+  }
+  .hero h1 {
+    color: #fff;
+    font-size: clamp(2.5rem, 5.6vw, 4.15rem);
+    margin-bottom: 1.1rem;
+  }
+  .hero-sub {
+    font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+    line-height: 1.55;
+    color: #c6c8ec;
+    max-width: 46ch;
+    margin-bottom: 1.9rem;
+  }
+  .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-bottom: 1.8rem;
+  }
+  .hero-trust {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.55rem 1.4rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: #9a9cc4;
+  }
+  .hero-trust li {
+    position: relative;
+    padding-left: 1rem;
+  }
+  .hero-trust li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #ff6a3d;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    left: 50%;
+    bottom: 1.1rem;
+    translate: -50% 0;
+    width: 26px;
+    height: 40px;
+    border: 1.5px solid rgba(255, 255, 255, 0.28);
+    border-radius: 14px;
+    display: none;
+  }
+  .hero-scroll span {
+    position: absolute;
+    left: 50%;
+    top: 8px;
+    translate: -50% 0;
+    width: 4px;
+    height: 8px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.6);
+    animation: scroll 1.8s var(--ease, ease) infinite;
+  }
+  @keyframes scroll {
+    0% { opacity: 0; transform: translate(-50%, 0); }
+    40% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, 12px); }
+  }
+
+  @media (min-width: 981px) {
+    .hero-scroll { display: block; }
+  }
+  .hero-term {
+    min-width: 0;
+  }
+  @media (max-width: 980px) {
+    .hero-inner {
+      grid-template-columns: 1fr;
+    }
+    .hero-term {
+      max-width: 560px;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-scroll span { animation: none; }
+  }
+</style>

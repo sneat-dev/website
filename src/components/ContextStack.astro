@@ -1,0 +1,220 @@
+---
+import { LAYERS, productsInLayer } from '../data/products';
+
+const COLOR: Record<string, string> = {
+  specify: '#5b53f0',
+  understand: '#7d5cf0',
+  store: '#9a57e6',
+  build: '#c75fce',
+  workbench: '#ff6a3d',
+};
+
+const rows = LAYERS.filter((l) => l.id !== 'workbench');
+const workbench = LAYERS.find((l) => l.id === 'workbench')!;
+const wbProducts = productsInLayer('workbench');
+const chaos = ['stale wiki', '// TODO(later)', 'six repos', 'that Slack thread', '“ask Dana”', '??', 'a diagram from 2023', 'tribal knowledge'];
+---
+
+<section id="stack" class="section section--alt">
+  <div class="container">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">The context stack</p>
+      <h2>One problem. Five ways in.</h2>
+      <p>Scattered context is the disease. A structured stack is the cure. Each layer takes one question and turns guesswork into something you — and your AI — can just <em>retrieve</em>.</p>
+    </div>
+
+    <div class="chaos" data-reveal aria-hidden="true">
+      {chaos.map((c, i) => <span class="frag mono" style={`--i:${i}`}>{c}</span>)}
+    </div>
+    <p class="chaos-caption mono" data-reveal>scattered context&nbsp; ↓ &nbsp;structured into a stack</p>
+
+    <div class="stack" data-reveal>
+      {
+        rows.map((layer, i) => (
+          <div class="layer" style={`--lc:${COLOR[layer.id]}`}>
+            <div class="layer-head">
+              <span class="layer-idx mono">{String(i + 1).padStart(2, '0')}</span>
+              <div>
+                <h3>{layer.name}</h3>
+                <p class="layer-q">{layer.question}</p>
+              </div>
+            </div>
+            <div class="layer-products">
+              {productsInLayer(layer.id).map((p) => (
+                <a class="pchip" href={`/${p.slug}/`} data-soon={p.status === 'coming-soon' ? 'true' : undefined}>
+                  {p.name}
+                </a>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+
+      <div class="base" style={`--lc:${COLOR.workbench}`} data-reveal>
+        <div class="base-head">
+          <span class="layer-idx mono">05</span>
+          <div>
+            <h3>{workbench.name} <span class="base-sub">· the Sneat CLI</span></h3>
+            <p class="layer-q">{workbench.question}</p>
+          </div>
+        </div>
+        <div class="layer-products">
+          {wbProducts.map((p) => (
+            <a class="pchip pchip--base" href={`/${p.slug}/`}>{p.name}</a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .center {
+    text-align: center;
+  }
+  .section-head.center p {
+    margin-inline: auto;
+  }
+
+  /* chaos lead-in */
+  .chaos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.55rem;
+    max-width: 640px;
+    margin: 0 auto 0.9rem;
+  }
+  .frag {
+    font-size: 0.76rem;
+    color: var(--color-text-faint);
+    background: var(--color-surface);
+    border: 1px dashed var(--color-border);
+    border-radius: 8px;
+    padding: 0.24rem 0.6rem;
+    transform: rotate(calc((var(--i) - 4) * 1.4deg));
+    opacity: 0.9;
+  }
+  .chaos-caption {
+    text-align: center;
+    font-size: 0.76rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-faint);
+    margin: 0 0 1.6rem;
+  }
+
+  .stack {
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .layer,
+  .base {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.15rem 1.4rem;
+    border: 1px solid var(--color-border);
+    border-left: 4px solid var(--lc);
+    border-radius: var(--radius);
+    background: var(--color-surface);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.18s var(--ease, ease), box-shadow 0.18s ease, border-color 0.18s ease;
+  }
+  .layer:hover,
+  .base:hover {
+    transform: translateX(4px);
+    box-shadow: var(--shadow);
+  }
+  .layer-head,
+  .base-head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.85rem;
+    flex: 0 0 44%;
+    min-width: 0;
+  }
+  .layer-idx {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--lc);
+  }
+  .layer h3,
+  .base h3 {
+    margin: 0 0 0.15rem;
+    font-size: 1.15rem;
+  }
+  .layer-q {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .base-sub {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text-faint);
+    letter-spacing: 0;
+  }
+
+  .layer-products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    flex: 1;
+  }
+  .pchip {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 550;
+    padding: 0.32rem 0.7rem;
+    border-radius: var(--radius-pill);
+    background: color-mix(in srgb, var(--lc) 9%, var(--color-bg));
+    color: color-mix(in srgb, var(--lc) 62%, var(--color-text));
+    border: 1px solid color-mix(in srgb, var(--lc) 22%, var(--color-border));
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  }
+  .pchip:hover {
+    text-decoration: none;
+    transform: translateY(-1px);
+    background: color-mix(in srgb, var(--lc) 16%, var(--color-bg));
+    color: color-mix(in srgb, var(--lc) 80%, var(--color-text));
+  }
+  .pchip[data-soon] {
+    border-style: dashed;
+    opacity: 0.82;
+  }
+
+  /* the workbench base bar — the keystone */
+  .base {
+    background: linear-gradient(100deg, color-mix(in srgb, var(--lc) 12%, var(--color-bg)) 0%, var(--color-surface) 60%);
+    border-left-width: 4px;
+    margin-top: 0.35rem;
+  }
+  .pchip--base {
+    background: var(--lc);
+    color: #fff;
+    border-color: transparent;
+  }
+  .pchip--base:hover {
+    background: var(--ember-strong);
+    color: #fff;
+  }
+
+  @media (max-width: 720px) {
+    .layer,
+    .base {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.85rem;
+    }
+    .layer-head,
+    .base-head {
+      flex-basis: auto;
+    }
+  }
+</style>

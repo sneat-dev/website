@@ -210,11 +210,13 @@ hr {
   border-color: color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
   background: var(--color-soft);
 }
-.section--ink .btn-ghost {
+.section--ink .btn-ghost,
+.on-dark .btn-ghost {
   color: #eceeff;
   border-color: #ffffff2e;
 }
-.section--ink .btn-ghost:hover {
+.section--ink .btn-ghost:hover,
+.on-dark .btn-ghost:hover {
   background: #ffffff14;
   border-color: #ffffff4d;
 }
@@ -229,6 +231,50 @@ code {
   padding: 0.12em 0.4em;
   border-radius: 6px;
   color: var(--color-accent-strong);
+}
+
+/* ── Shared surfaces ──────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.18s var(--ease, ease), box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.card--link:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in srgb, var(--color-accent) 34%, var(--color-border));
+}
+
+/* small inline label chip */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.28rem 0.6rem;
+  border-radius: var(--radius-pill);
+  background: var(--color-bg-3);
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+/* responsive auto grid */
+.grid-auto {
+  display: grid;
+  gap: 1.1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+}
+
+/* ── Transparent nav over the dark hero ───────────────────────────────────── */
+.site-header--transparent {
+  --nav-fg: rgba(240, 241, 255, 0.92);
+  --nav-fg-muted: rgba(202, 204, 236, 0.72);
+  --nav-border: transparent;
 }
 
 /* ── Reveal-on-scroll (progressive, no-JS safe) ───────────────────────────── */

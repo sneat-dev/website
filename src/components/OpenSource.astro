@@ -1,0 +1,99 @@
+---
+import { SITE } from '../config';
+
+const pillars = [
+  {
+    title: 'Open formats',
+    body: 'SpecScore, ModelSpec and DTQL are open specifications. The format outlives any one tool — including ours.',
+  },
+  {
+    title: 'Free standard tier',
+    body: 'Every tool is fully usable for free in its standard version. Hosted or premium extras may come later; the core stays open.',
+  },
+  {
+    title: 'Own your data',
+    body: 'Your context lives in your repository and your vault — git-native, versioned and portable. No lock-in by design.',
+  },
+];
+---
+
+<section id="open-source" class="section section--alt">
+  <div class="container">
+    <div class="os-grid">
+      <div class="os-head" data-reveal>
+        <p class="eyebrow">Open source</p>
+        <h2>Open by default.<br />Yours to keep.</h2>
+        <p class="lead">This isn’t a free tier with a trapdoor. The standard version of everything here is open, and the specs beneath it are open too.</p>
+        <div class="os-cta">
+          <a class="btn btn-primary" href={SITE.githubOrg} rel="noopener" target="_blank">Star on GitHub</a>
+          <a class="btn btn-ghost" href="#principles">Read the principles</a>
+        </div>
+      </div>
+
+      <div class="os-pillars">
+        {
+          pillars.map((p, i) => (
+            <article class="os-pillar" data-reveal data-reveal-delay={String(i * 80)}>
+              <span class="os-mark" aria-hidden="true"></span>
+              <div>
+                <h3>{p.title}</h3>
+                <p>{p.body}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .os-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .os-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+  .os-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .os-pillar {
+    display: flex;
+    gap: 1rem;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .os-pillar:first-child {
+    border-top: 0;
+  }
+  .os-mark {
+    flex: 0 0 auto;
+    width: 12px;
+    height: 12px;
+    margin-top: 0.4rem;
+    border-radius: 3px;
+    background: var(--grad-accent);
+  }
+  .os-pillar h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.12rem;
+  }
+  .os-pillar p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.96rem;
+  }
+  @media (max-width: 860px) {
+    .os-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

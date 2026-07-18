@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+import RevealScript from '../../components/RevealScript.astro';
+import { PRODUCTS, layerById, type Product } from '../../data/products';
+
+export function getStaticPaths() {
+  return PRODUCTS.map((product) => ({
+    params: { product: product.slug },
+    props: { product },
+  }));
+}
+
+interface Props {
+  product: Product;
+}
+const { product } = Astro.props;
+const layer = layerById(product.layer);
+const canonical = product.docs ?? product.home;
+---
+
+<BaseLayout
+  title={`${product.name} docs — Sneat.dev`}
+  description={`Documentation for ${product.name}. ${product.blurb}`}
+  noindex={!!canonical}
+>
+  <PageHead eyebrow={`${product.name} · docs`} title={`${product.name} documentation`}>
+    <div class="d-actions">
+      <a class="btn btn-ghost" href={`/${product.slug}/`}>← {product.name} overview</a>
+    </div>
+  </PageHead>
+
+  <section class="section">
+    <div class="container-narrow d-body" data-reveal>
+      {
+        canonical ? (
+          <>
+            <p class="lead">
+              {product.name}’s documentation lives on its own home. On sneat.dev we
+              keep one honest link to the canonical source rather than a stale copy.
+            </p>
+            <a class="btn btn-primary d-cta" href={canonical} rel="noopener" target="_blank">
+              Open {product.name} docs ↗
+            </a>
+            <p class="d-url mono">{canonical}</p>
+          </>
+        ) : (
+          <>
+            <p class="lead">
+              Full documentation for {product.name} is still being written. It sits
+              in the <a href="/#stack"><b>{layer.name}</b></a> layer of the stack —
+              here’s where to look in the meantime.
+            </p>
+            <ul class="d-list">
+              {product.repo && (
+                <li>
+                  <b>Source &amp; specification</b> —{' '}
+                  <a href={product.repo} rel="noopener" target="_blank">{product.repo.replace(/^https?:\/\//, '')} ↗</a>
+                </li>
+              )}
+              <li>
+                <b>What it does</b> — <a href={`/${product.slug}/`}>the {product.name} overview</a>
+              </li>
+              <li>
+                <b>Where it fits</b> — <a href="/#stack">the context stack</a>
+              </li>
+            </ul>
+          </>
+        )
+      }
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .d-body {
+    padding-block: 0.5rem;
+  }
+  .d-cta {
+    margin: 0.5rem 0 1rem;
+  }
+  .d-url {
+    color: var(--color-text-faint);
+    font-size: 0.85rem;
+  }
+  .d-list {
+    list-style: none;
+    margin: 1.5rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+  .d-list li {
+    padding: 1rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+  }
+</style>

@@ -1,0 +1,99 @@
+---
+/**
+ * A dark terminal card. Pass `lines` as an array of HTML strings (one per row);
+ * they're joined with real newlines and rendered inside a <pre>, so wrapping/
+ * whitespace survives (Astro collapses newlines in slotted, non-pre content).
+ * Use the helper spans inside each line:
+ *   <span class="c-prompt">$</span>  a command
+ *   <span class="c-comment"># a comment</span>
+ *   <span class="c-out">output</span>   <span class="c-em">highlight</span>   <b>bold</b>
+ */
+interface Props {
+  label?: string;
+  lines: string[];
+  class?: string;
+}
+const { label = 'terminal', lines, class: klass } = Astro.props;
+const code = lines.join('\n');
+---
+
+<div class:list={['term', klass]}>
+  <div class="term-bar">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span class="term-label mono">{label}</span>
+  </div>
+  <pre class="term-body"><code set:html={code} /></pre>
+</div>
+
+<style>
+  .term {
+    background: var(--code-bg);
+    border: 1px solid var(--code-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(9, 8, 30, 0.7);
+    text-align: left;
+    min-width: 0;
+    max-width: 100%;
+  }
+  .term-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--code-border);
+    background: color-mix(in srgb, var(--code-bg) 82%, #ffffff);
+  }
+  .dots {
+    display: inline-flex;
+    gap: 6px;
+  }
+  .dots i {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #45476e;
+  }
+  .dots i:nth-child(1) {
+    background: #ff5f57;
+  }
+  .dots i:nth-child(2) {
+    background: #febc2e;
+  }
+  .dots i:nth-child(3) {
+    background: #28c840;
+  }
+  .term-label {
+    font-size: 0.72rem;
+    color: #9a9cc4;
+    letter-spacing: 0.02em;
+  }
+  .term-body {
+    margin: 0;
+    padding: 1.1rem 1.2rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.84rem;
+    line-height: 1.85;
+    color: var(--code-fg);
+    overflow-x: auto;
+    white-space: pre;
+  }
+  .term-body :global(.c-prompt) {
+    color: #7c83ff;
+    user-select: none;
+    margin-right: 0.35rem;
+  }
+  .term-body :global(.c-comment) {
+    color: #6f7196;
+  }
+  .term-body :global(.c-out) {
+    color: #9fa2cf;
+  }
+  .term-body :global(.c-em) {
+    color: #ffb28a;
+  }
+  .term-body :global(b) {
+    color: #fff;
+    font-weight: 600;
+  }
+</style>

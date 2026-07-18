@@ -1,0 +1,123 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import ProductCard from '../components/ProductCard.astro';
+import RevealScript from '../components/RevealScript.astro';
+import { productBySlug } from '../data/products';
+
+const modelspec = productBySlug('modelspec')!;
+const graphspec = productBySlug('graphspec')!;
+---
+
+<BaseLayout
+  title="Specs — SpecScore, ModelSpec & GraphSpec — Sneat.dev"
+  description="The specification layer of the Sneat toolkit. SpecScore is the open spec format and methodology; ModelSpec and GraphSpec extend the family to data models and architecture."
+>
+  <PageHead
+    eyebrow="Specifications"
+    title="Structure the intent, and it stops rotting."
+    lead="The bottom of the stack: turn requirements, data models and architecture into open, structured specs a human and an agent read the same way."
+  />
+
+  <!-- SpecScore — the standalone flagship, its own identity preserved -->
+  <section class="section">
+    <div class="container">
+      <article class="ss on-dark" data-reveal>
+        <div class="ss-bg" aria-hidden="true"></div>
+        <div class="ss-body">
+          <p class="ss-eyebrow mono">The flagship · its own home at specscore.md</p>
+          <h2>SpecScore</h2>
+          <p class="ss-tag">The open spec format and methodology at the core of everything here.</p>
+          <p class="ss-lead">
+            Write requirements as <code>SpecScore.md</code> artifacts: lintable,
+            traceable, acceptance-criteria-first context that both humans and AI
+            agents can trust. SpecScore is more than a file format — it’s a way of
+            working, and it’s dogfooded across the entire Sneat ecosystem.
+          </p>
+          <div class="ss-cta">
+            <a class="btn btn-primary" href="https://specscore.md" rel="noopener" target="_blank">Visit specscore.md</a>
+            <a class="btn btn-ghost" href="https://specscore.studio" rel="noopener" target="_blank">SpecScore Studio</a>
+            <a class="btn btn-ghost" href="/specscore/">On the platform</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- The rest of the family -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">The SpecScore family</p>
+        <h2>Same idea, more surfaces.</h2>
+        <p>SpecScore proved that structured intent beats prose. ModelSpec and GraphSpec carry the idea into your data models and your architecture.</p>
+      </div>
+      <div class="fam-grid">
+        <ProductCard product={modelspec} />
+        <ProductCard product={graphspec} />
+      </div>
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .ss {
+    position: relative;
+    border-radius: var(--radius);
+    padding: clamp(2rem, 4vw, 3.25rem);
+    background: #0c1512;
+    color: #e9f6f0;
+    overflow: hidden;
+    isolation: isolate;
+    --color-accent: #10b981;
+    --color-accent-strong: #0e9f72;
+    --color-accent-text: #04120d;
+  }
+  .ss-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(520px 300px at 88% -20%, rgba(16, 185, 129, 0.45), transparent 70%),
+      radial-gradient(480px 300px at -10% 120%, rgba(16, 185, 129, 0.18), transparent 70%);
+  }
+  .ss-eyebrow {
+    color: #6fe3b8;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    margin: 0 0 0.8rem;
+  }
+  .ss h2 {
+    color: #fff;
+    font-size: clamp(2.2rem, 4vw, 3.2rem);
+    margin: 0 0 0.6rem;
+  }
+  .ss-tag {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #d6f5e8;
+    margin: 0 0 1rem;
+  }
+  .ss-lead {
+    max-width: 60ch;
+    color: #b6ddce;
+  }
+  .ss-lead code {
+    background: #10b98126;
+    color: #8ef0c5;
+  }
+  .ss-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.6rem;
+  }
+  .fam-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+    gap: 1.1rem;
+    max-width: 720px;
+  }
+</style>

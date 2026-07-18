@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import Terminal from '../components/Terminal.astro';
+import RevealScript from '../components/RevealScript.astro';
+import { SITE } from '../config';
+import { productBySlug } from '../data/products';
+
+const wb = productBySlug('wb')!;
+
+// Tools you can install and use today — honest, verifiable entry points.
+const today = [
+  { name: 'CodeGrapher', cmd: 'brew install codegrapher', home: 'https://codegrapher.dev' },
+  { name: 'SpecScore', cmd: 'brew install specscore', home: 'https://specscore.md' },
+  { name: 'DALgo', cmd: 'go install github.com/dal-go/dalgo@latest', home: 'https://dalgo.io' },
+  { name: 'inGitDB', cmd: 'brew install ingitdb', home: 'https://ingitdb.com' },
+];
+---
+
+<BaseLayout
+  title="Try the Sneat CLI — Sneat.dev"
+  description="The unified Sneat CLI (WB) is coming. Meanwhile, the tools stand on their own today — install any of them with a single command."
+>
+  <PageHead
+    eyebrow="Sneat CLI · WB"
+    title="Start with one command."
+    lead="WB — the workbench that ties the whole stack together for you and your AI — is on its way. You don’t have to wait for it: the tools stand on their own today, one static binary at a time."
+  />
+
+  <section class="section">
+    <div class="container cli-grid">
+      <div class="cli-main" data-reveal>
+        <h2>The tools, today</h2>
+        <p class="muted">Each tool is independent and installable right now. Pick the one that solves your sharpest problem first.</p>
+        <div class="today">
+          {
+            today.map((t) => (
+              <div class="today-row">
+                <a class="today-name" href={t.home} rel="noopener" target="_blank">{t.name} ↗</a>
+                <code>{t.cmd}</code>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <aside class="cli-side" data-reveal data-reveal-delay="100">
+        <Terminal
+          label="soon: one CLI"
+          lines={[
+            '<span class="c-comment"># the workbench — coming soon</span>',
+            '<span class="c-prompt">$</span> brew install <b>sneat</b>',
+            '<span class="c-prompt">$</span> sneat init',
+            '<span class="c-out">→ specs, graph, data &amp; context, wired</span>',
+            '<span class="c-prompt">$</span> sneat context --for-agent',
+            '<span class="c-out">→ what your copilot was missing</span>',
+          ]}
+        />
+        <p class="soon-note mono">WB is in the workshop. Watch it take shape:</p>
+        <a class="btn btn-primary btn-block" href={wb.repo} rel="noopener" target="_blank">Watch WB on GitHub</a>
+        <a class="btn btn-ghost btn-block" href={SITE.githubOrg} rel="noopener" target="_blank">The whole toolkit →</a>
+      </aside>
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .cli-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+  .cli-main h2 {
+    font-size: 1.8rem;
+  }
+  .cli-main > .muted {
+    max-width: 46ch;
+    margin-bottom: 1.6rem;
+  }
+  .today {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .today-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.95rem 1.2rem;
+    border-top: 1px solid var(--color-border);
+    flex-wrap: wrap;
+  }
+  .today-row:first-child {
+    border-top: 0;
+  }
+  .today-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    color: var(--color-text);
+  }
+  .today-row code {
+    font-size: 0.82rem;
+    background: var(--code-bg);
+    color: var(--code-fg);
+    padding: 0.4rem 0.7rem;
+    border-radius: 8px;
+  }
+  .soon-note {
+    font-size: 0.8rem;
+    color: var(--color-text-faint);
+    margin: 1.4rem 0 0.8rem;
+  }
+  .btn-block {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.6rem;
+  }
+  @media (max-width: 820px) {
+    .cli-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

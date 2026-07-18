@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHead from '../components/PageHead.astro';
+import RevealScript from '../components/RevealScript.astro';
+import StatusPill from '../components/StatusPill.astro';
+import { PROBLEMS, IDEA_TO_SHIP } from '../data/problems';
+import { productBySlug, layerById } from '../data/products';
+---
+
+<BaseLayout
+  title="Problems — Sneat.dev"
+  description="Documentation rot, context fragmentation, AI without context, runaway complexity, data lock-in, engineering chaos — and the tools built to kill each."
+>
+  <PageHead
+    eyebrow="Problems"
+    title="Name the pain. Then kill it."
+    lead="Every tool here exists because of a specific, recognisable problem. Here they are — with the part of the stack that answers each."
+  />
+
+  <section class="section">
+    <div class="container prob-list">
+      {
+        PROBLEMS.map((p, i) => (
+          <article class="prow" data-reveal>
+            <div class="prow-l">
+              <span class="prow-idx mono">{String(i + 1).padStart(2, '0')}</span>
+              <h2>{p.name}</h2>
+              <p class="prow-line">{p.line}</p>
+              <p class="prow-layer mono">→ answered at the <b>{layerById(p.layer).name}</b> layer</p>
+            </div>
+            <div class="prow-r">
+              <p class="prow-kicker mono">Killed by</p>
+              <div class="prow-tools">
+                {p.killedBy.map((slug) => {
+                  const prod = productBySlug(slug);
+                  if (!prod) return null;
+                  return (
+                    <a class="tool card card--link" href={`/${prod.slug}/`}>
+                      <span class="tool-name">{prod.name}</span>
+                      <StatusPill status={prod.status} />
+                      <span class="tool-tag">{prod.tagline}</span>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </article>
+        ))
+      }
+
+      <article class="prow prow--summary" data-reveal>
+        <div class="prow-l">
+          <span class="prow-idx mono">∑</span>
+          <h2>{IDEA_TO_SHIP.name}</h2>
+          <p class="prow-line">{IDEA_TO_SHIP.line}</p>
+          <p class="prow-layer mono">→ the whole stack, through the <b>Workbench</b></p>
+        </div>
+        <div class="prow-r">
+          <a class="btn btn-primary" href="/cli/">Try the Sneat CLI</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <RevealScript slot="scripts" />
+</BaseLayout>
+
+<style>
+  .prob-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .prow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(1.5rem, 4vw, 3.5rem);
+    padding: clamp(1.8rem, 4vw, 2.6rem) 0;
+    border-top: 1px solid var(--color-border);
+    align-items: start;
+  }
+  .prow:first-child {
+    border-top: 0;
+  }
+  .prow-idx {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--ember-strong);
+    margin-bottom: 0.6rem;
+  }
+  .prow-l h2 {
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    margin: 0 0 0.6rem;
+  }
+  .prow-line {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    margin: 0 0 0.8rem;
+    max-width: 42ch;
+  }
+  .prow-layer {
+    font-size: 0.8rem;
+    color: var(--color-text-faint);
+  }
+  .prow-layer b,
+  .prow-kicker {
+    color: var(--color-accent-strong);
+  }
+  .prow-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0.3rem 0 0.8rem;
+  }
+  .prow-tools {
+    display: grid;
+    gap: 0.7rem;
+  }
+  .tool {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: start;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.1rem;
+    text-decoration: none;
+    color: inherit;
+  }
+  .tool:hover {
+    text-decoration: none;
+  }
+  .tool-name {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+  }
+  .tool-tag {
+    grid-column: 1 / -1;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+  }
+  .prow--summary .prow-r {
+    display: flex;
+    align-items: center;
+  }
+  @media (max-width: 760px) {
+    .prow {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
