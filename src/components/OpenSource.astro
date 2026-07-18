@@ -18,7 +18,6 @@ const pillars = [
 ---
 
 <section id="open-source" class="section section--alt os">
-  <div class="os-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="os-grid">
       <div class="os-head" data-reveal>
@@ -45,31 +44,43 @@ const pillars = [
         }
       </div>
     </div>
+
+    <figure class="os-photo" data-reveal>
+      <img
+        src="/photos/open-source-bg.jpg"
+        alt="A lone kitesurfer riding across a vast open ocean, kite aloft"
+        loading="lazy"
+        decoding="async"
+        width="1600"
+        height="1133"
+      />
+    </figure>
   </div>
 </section>
 
 <style>
-  .os {
-    position: relative;
+  /* The kitesurfer photo as a clean full-width band — vivid, no wash, its own
+     element (not behind text), so it never fights legibility or stretches on
+     mobile. Fixed aspect ratios keep the kite + rider in frame at any width. */
+  .os-photo {
+    margin-top: clamp(2.5rem, 5vw, 4rem);
+    border-radius: var(--radius);
     overflow: hidden;
-    isolation: isolate;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow);
   }
-  /* Full-bleed background: a lone kitesurfer in a vast, bright ocean — openness.
-     Light overlay so the sea and kiter read while dark text stays crisp. */
-  .os-bg {
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image:
-      linear-gradient(
-        100deg,
-        color-mix(in srgb, var(--color-bg-2) 50%, transparent) 0%,
-        color-mix(in srgb, var(--color-bg-2) 56%, transparent) 44%,
-        color-mix(in srgb, var(--color-bg-2) 76%, transparent) 100%
-      ),
-      url('/photos/open-source-bg.jpg');
-    background-size: cover, cover;
-    background-position: center, center 46%;
+  .os-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 24 / 9;
+    object-fit: cover;
+    object-position: center 32%;
+  }
+  @media (max-width: 720px) {
+    .os-photo img {
+      aspect-ratio: 16 / 10;
+      object-position: center 40%;
+    }
   }
   .os-grid {
     display: grid;
