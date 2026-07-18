@@ -39,6 +39,7 @@ Images are stored optimized in `public/photos/` and `public/og/`.
 | File | Used in | Photographer | Source (canonical) | License |
 |------|---------|--------------|--------------------|---------|
 | `photos/open-source-bg.jpg` | Homepage — "Open by default" band (lone kitesurfer riding, kite aloft) | Nikita Pishchugin | https://unsplash.com/photos/bOzwLHro8Xg | Unsplash License |
+| `photos/open-source-bg-mobile.jpg` | Same photo/section, mobile only — a manually verified crop (not CSS cover) so the kite and the rider both stay fully in frame at phone widths | Nikita Pishchugin | https://unsplash.com/photos/bOzwLHro8Xg | Unsplash License |
 | `photos/why-fire.jpg` | Homepage — "Forged in the fire" header (esp. mobile) | Matt Palmer | https://unsplash.com/photos/kbTp7dBzHyY | Unsplash License |
 | `photos/why-flames.jpg` | Homepage — "proving ground" wall (bright fire behind frosted tags) | Wolfgang Hasselmann | https://unsplash.com/photos/DrjS1pQXTlo | Unsplash License |
 

@@ -140,47 +140,42 @@ const pillars = [
   }
 
   @media (max-width: 760px) {
-    /* Cropping-by-cover is what kept cutting the kite or the rider out of
-       frame — no crop math gets that right at every viewport. Instead show
-       the photo at its native aspect ratio, full width, nothing cropped,
-       as its own band between the header and the lede (not overlaid), so
-       there's no way for text to land on top of the rider or the kite. */
+    /* Runtime cover-crop math on the wide original kept landing the kite or
+       the rider outside the box at one viewport or another. So instead: a
+       pre-cropped mobile-only derivative (open-source-bg-mobile.jpg, same
+       photo, verified to hold both with margin on every side) at an aspect
+       ratio that matches this box almost exactly, so `cover` barely has to
+       adjust it. Photo is the section's true background top-to-bottom;
+       header sits in the sky above the kite, lede sits in the water below
+       the rider, nothing in between but the rider himself. */
     .os-hero {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      overflow: visible;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 800 / 985;
       min-height: 0;
-      padding-block: 1.5rem 0;
+      padding-block: 0;
     }
     .os-hero-bg {
-      position: relative;
-      inset: auto;
-      z-index: auto;
-      order: 2;
-      width: 100%;
-      aspect-ratio: 1600 / 1066;
-      background: url('/photos/open-source-bg.jpg') center / 100% auto no-repeat;
+      background: url('/photos/open-source-bg-mobile.jpg') center / cover no-repeat;
       transform: scaleX(-1);
-      margin-block: 1.25rem;
     }
     .os-hero-inner {
-      display: contents;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      max-width: none;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding-block: 1.15rem 1.25rem;
     }
-    .os-hero-head {
-      order: 1;
+    .os-hero-head,
+    .os-lede {
       max-width: none;
       padding-inline: 22px;
     }
-    .os-lede {
-      order: 3;
-      max-width: none;
-      padding-inline: 22px;
-    }
-    .os-hero .eyebrow,
-    .os-hero h2,
-    .os-lede {
-      text-shadow: none;
+    .os-hero h2 {
+      font-size: 1.7rem;
     }
     .os-cta {
       display: none;
