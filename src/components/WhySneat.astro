@@ -34,16 +34,30 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
       </blockquote>
     </div>
 
-    <div class="why-wall" data-reveal aria-hidden="true">
-      <div class="wall-glow"></div>
-      <div class="wall-chips">
-        {
-          ecosystem.map((name) => (
-            <span class:list={['wchip', 'mono', highlight.has(name) && 'wchip--hot']} set:html={name} />
-          ))
-        }
+    <div class="why-right">
+      <figure class="why-photo" data-reveal>
+        <img
+          src="/photos/origin.jpg"
+          alt="A developer working late at a glowing multi-monitor workstation"
+          loading="lazy"
+          decoding="async"
+          width="720"
+          height="1280"
+        />
+        <figcaption class="mono">2 a.m. · the making</figcaption>
+      </figure>
+
+      <div class="why-wall" data-reveal data-reveal-delay="80" aria-hidden="true">
+        <div class="wall-glow"></div>
+        <div class="wall-chips">
+          {
+            ecosystem.map((name) => (
+              <span class:list={['wchip', 'mono', highlight.has(name) && 'wchip--hot']} set:html={name} />
+            ))
+          }
+        </div>
+        <p class="wall-cap mono">the toolkit’s proving ground</p>
       </div>
-      <p class="wall-cap mono">the toolkit’s proving ground</p>
     </div>
   </div>
 </section>
@@ -74,6 +88,37 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
     font-style: normal;
   }
 
+  .why-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .why-photo {
+    position: relative;
+    margin: 0;
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 1px solid #ffffff1f;
+  }
+  .why-photo img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    object-position: 50% 35%;
+    display: block;
+    filter: saturate(0.9) brightness(0.92);
+  }
+  .why-photo figcaption {
+    position: absolute;
+    left: 0.9rem;
+    bottom: 0.7rem;
+    font-size: 0.72rem;
+    color: #e7e8ff;
+    background: #0008;
+    padding: 0.25rem 0.55rem;
+    border-radius: 6px;
+    backdrop-filter: blur(4px);
+  }
   .why-wall {
     position: relative;
     border: 1px solid #ffffff1a;

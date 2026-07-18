@@ -75,9 +75,9 @@ export const LAYERS: Layer[] = [
   {
     id: 'workbench',
     name: 'Workbench',
-    question: 'The one surface that ties it together.',
+    question: 'Run it across your whole fleet.',
     blurb:
-      'The Sneat CLI: where the whole stack meets you and your AI — in the terminal, in the agent, in the flow.',
+      'The tools work per-repo; your world spans dozens of them. The workbench keeps every clone in sync and runs operations across your entire fleet of repositories at once.',
   },
 ];
 
@@ -227,12 +227,12 @@ export const PRODUCTS: Product[] = [
     name: 'WB',
     layer: 'workbench',
     status: 'coming-soon',
-    tagline: 'The workbench for you and your AI.',
+    tagline: 'Fleet-wide ops for all your repos.',
     blurb:
-      'The Sneat CLI — the one surface that ties the stack together. Specs, code graph, data and context, in your terminal and your agent’s. The front door to everything here.',
-    kills: ['ai-context', 'chaos', 'idea-to-ship'],
-    repo: 'https://github.com/sneat-dev/wb',
-    kind: 'CLI · coming soon',
+      'The workbench CLI for fleet-wide operations across your GitHub repositories: keep every local clone in sync with GitHub, and run config-driven recipes across every repo that matches — in parallel, with a live progress UI. WB is moving into sneat-dev.',
+    kills: ['chaos', 'complexity'],
+    repo: 'https://github.com/sneat-dev',
+    kind: 'Go CLI · sync + recipes',
   },
 ];
 

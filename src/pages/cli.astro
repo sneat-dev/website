@@ -8,58 +8,101 @@ import { productBySlug } from '../data/products';
 
 const wb = productBySlug('wb')!;
 
-// Tools you can install and use today — honest, verifiable entry points.
-const today = [
-  { name: 'CodeGrapher', cmd: 'brew install codegrapher', home: 'https://codegrapher.dev' },
-  { name: 'SpecScore', cmd: 'brew install specscore', home: 'https://specscore.md' },
-  { name: 'DALgo', cmd: 'go install github.com/dal-go/dalgo@latest', home: 'https://dalgo.io' },
-  { name: 'inGitDB', cmd: 'brew install ingitdb', home: 'https://ingitdb.com' },
+// What the Sneat CLI actually does today (verified against sneat-co/sneat-cli).
+const does = [
+  { k: 'sneat auth login', v: 'Sign in to Sneat.app from the terminal (browser or email).' },
+  { k: 'sneat chat', v: 'Chat with your spaces in an interactive terminal session.' },
+  { k: 'sneat convo say', v: 'Drive the conversational / agent runtime — say, actions, replay.' },
+  { k: 'sneat contact get', v: 'Read your space data as JSON, scriptable and pipeable.' },
+];
+
+// Tools you can adopt today. We link to each tool's own home for install steps
+// rather than hard-coding commands that could drift.
+const tools = [
+  { name: 'SpecScore', home: 'https://specscore.md', note: 'specs' },
+  { name: 'CodeGrapher', home: 'https://codegrapher.dev', note: 'code graph' },
+  { name: 'inGitDB', home: 'https://ingitdb.com', note: 'data in git' },
+  { name: 'DTQL', home: 'https://dtql.org', note: 'queries' },
+  { name: 'PolyModel', home: 'https://polymodel.org', note: 'models' },
+  { name: 'DALgo', home: 'https://dalgo.io', note: 'Go data layer' },
 ];
 ---
 
 <BaseLayout
   title="Try the Sneat CLI — Sneat.dev"
-  description="The unified Sneat CLI (WB) is coming. Meanwhile, the tools stand on their own today — install any of them with a single command."
+  description="The Sneat CLI (sneat) is the command-line front door to the ecosystem — auth, chat with your spaces, and a conversational agent runtime. Public and installable today."
 >
   <PageHead
-    eyebrow="Sneat CLI · WB"
-    title="Start with one command."
-    lead="WB — the workbench that ties the whole stack together for you and your AI — is on its way. You don’t have to wait for it: the tools stand on their own today, one static binary at a time."
+    eyebrow="Sneat CLI · sneat"
+    title="Try the Sneat CLI."
+    lead="The command-line front door to the Sneat ecosystem: authenticate, talk to your spaces, and drive the conversational agent runtime. Public, open-source, installable today."
   />
 
   <section class="section">
     <div class="container cli-grid">
       <div class="cli-main" data-reveal>
-        <h2>The tools, today</h2>
-        <p class="muted">Each tool is independent and installable right now. Pick the one that solves your sharpest problem first.</p>
-        <div class="today">
+        <h2>Install it today</h2>
+        <p class="muted">One <code>go install</code> and you have the <code>sneat</code> command. No account needed to look around; <code>sneat auth login</code> when you’re ready.</p>
+        <dl class="does">
           {
-            today.map((t) => (
-              <div class="today-row">
-                <a class="today-name" href={t.home} rel="noopener" target="_blank">{t.name} ↗</a>
-                <code>{t.cmd}</code>
+            does.map((d) => (
+              <div class="does-row">
+                <dt class="mono">{d.k}</dt>
+                <dd>{d.v}</dd>
               </div>
             ))
           }
+        </dl>
+        <div class="cli-btns">
+          <a class="btn btn-primary" href={SITE.sneatCliRepo} rel="noopener" target="_blank">sneat-cli on GitHub ↗</a>
+          <a class="btn btn-ghost" href="/products/">Browse the toolkit</a>
         </div>
       </div>
 
       <aside class="cli-side" data-reveal data-reveal-delay="100">
         <Terminal
-          label="soon: one CLI"
+          label="sneat"
           lines={[
-            '<span class="c-comment"># the workbench — coming soon</span>',
-            '<span class="c-prompt">$</span> brew install <b>sneat</b>',
-            '<span class="c-prompt">$</span> sneat init',
-            '<span class="c-out">→ specs, graph, data &amp; context, wired</span>',
-            '<span class="c-prompt">$</span> sneat context --for-agent',
-            '<span class="c-out">→ what your copilot was missing</span>',
+            '<span class="c-prompt">$</span> go install \\',
+            '    github.com/sneat-co/sneat-cli/cmd/<b>sneat</b>@latest',
+            '<span class="c-prompt">$</span> sneat auth login',
+            '<span class="c-out">✓ signed in to Sneat.app</span>',
+            '<span class="c-prompt">$</span> sneat chat',
+            '<span class="c-out">→ talk to your spaces in the terminal</span>',
+            '<span class="c-prompt">$</span> sneat convo say <span class="c-em">"remind me tomorrow"</span>',
           ]}
         />
-        <p class="soon-note mono">WB is in the workshop. Watch it take shape:</p>
-        <a class="btn btn-primary btn-block" href={wb.repo} rel="noopener" target="_blank">Watch WB on GitHub</a>
-        <a class="btn btn-ghost btn-block" href={SITE.githubOrg} rel="noopener" target="_blank">The whole toolkit →</a>
       </aside>
+    </div>
+  </section>
+
+  <!-- WB — the developer workbench, distinct from the Sneat CLI -->
+  <section class="section section--alt">
+    <div class="container wb-band" data-reveal>
+      <div class="wb-copy">
+        <p class="eyebrow">Coming next · WB</p>
+        <h2>And a workbench for the fleet.</h2>
+        <p class="lead">
+          <b>WB</b> is a different beast from the Sneat CLI: the workbench{' '}
+          <em>CLI</em> for fleet-wide operations across your GitHub repos — keep
+          every local clone in sync, and run config-driven recipes across every
+          repo that matches, in parallel. It’s moving into <code>sneat-dev</code>.
+        </p>
+        <a class="btn btn-ghost" href={wb.repo} rel="noopener" target="_blank">Watch it take shape ↗</a>
+      </div>
+      <div class="wb-tools">
+        <p class="wb-tools-h mono">Adopt a tool today</p>
+        <ul>
+          {
+            tools.map((t) => (
+              <li>
+                <a href={t.home} rel="noopener" target="_blank">{t.name} ↗</a>
+                <span class="mono">{t.note}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -69,7 +112,7 @@ const today = [
 <style>
   .cli-grid {
     display: grid;
-    grid-template-columns: 1.1fr 0.9fr;
+    grid-template-columns: 1.05fr 0.95fr;
     gap: clamp(2rem, 5vw, 4rem);
     align-items: start;
   }
@@ -77,53 +120,85 @@ const today = [
     font-size: 1.8rem;
   }
   .cli-main > .muted {
-    max-width: 46ch;
+    max-width: 48ch;
     margin-bottom: 1.6rem;
   }
-  .today {
-    display: flex;
-    flex-direction: column;
+  .does {
+    margin: 0 0 1.7rem;
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
     overflow: hidden;
   }
-  .today-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 0.95rem 1.2rem;
+  .does-row {
+    padding: 0.9rem 1.15rem;
     border-top: 1px solid var(--color-border);
-    flex-wrap: wrap;
   }
-  .today-row:first-child {
+  .does-row:first-child {
     border-top: 0;
   }
-  .today-name {
-    font-family: var(--font-display);
+  .does-row dt {
+    color: var(--color-accent-strong);
+    font-size: 0.86rem;
     font-weight: 600;
-    color: var(--color-text);
+    margin-bottom: 0.2rem;
   }
-  .today-row code {
-    font-size: 0.82rem;
-    background: var(--code-bg);
-    color: var(--code-fg);
-    padding: 0.4rem 0.7rem;
-    border-radius: 8px;
+  .does-row dd {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 0.94rem;
   }
-  .soon-note {
-    font-size: 0.8rem;
-    color: var(--color-text-faint);
-    margin: 1.4rem 0 0.8rem;
-  }
-  .btn-block {
+  .cli-btns {
     display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 0.6rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .cli-side {
+    min-width: 0;
+  }
+
+  .wb-band {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+  }
+  .wb-copy .lead {
+    max-width: 52ch;
+  }
+  .wb-copy .btn {
+    margin-top: 1.4rem;
+  }
+  .wb-tools-h {
+    font-size: 0.74rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-faint);
+    margin: 0 0 0.8rem;
+  }
+  .wb-tools ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .wb-tools li {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0.9rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+  }
+  .wb-tools li span {
+    font-size: 0.76rem;
+    color: var(--color-text-faint);
   }
   @media (max-width: 820px) {
-    .cli-grid {
+    .cli-grid,
+    .wb-band {
       grid-template-columns: 1fr;
     }
   }

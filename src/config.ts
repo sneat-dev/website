@@ -32,6 +32,14 @@ export const SITE = {
   cliHref: '/cli/',
 
   /**
+   * The Sneat CLI (`sneat`) — the ecosystem's command-line front door: auth,
+   * chat with your spaces, and a conversational/agent runtime. PUBLIC and
+   * installable today. Distinct from WB, the developer workbench (coming soon).
+   */
+  sneatCliRepo: 'https://github.com/sneat-co/sneat-cli',
+  sneatCliInstall: 'go install github.com/sneat-co/sneat-cli/cmd/sneat@latest',
+
+  /**
    * GA4 measurement id, or null for no analytics. No sneat.dev property is
    * provisioned yet — kept null so the tag isn't loaded to do nothing. Wire a
    * real id here once one exists (canonical map: sneat-ops/data/ga-properties.json).
