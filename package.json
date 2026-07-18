@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Sneat.dev — the developer platform landing site.",
+  "packageManager": "pnpm@11.12.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
