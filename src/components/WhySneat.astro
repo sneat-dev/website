@@ -49,7 +49,6 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
       </figure>
 
       <div class="why-wall" data-reveal data-reveal-delay="80" aria-hidden="true">
-        <div class="wall-glow"></div>
         <div class="wall-chips">
           {
             ecosystem.map((name) => (
@@ -161,26 +160,21 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
     border-radius: 6px;
     backdrop-filter: blur(4px);
   }
+  /* Bright close-up fire behind the ecosystem tags; the tags are frosted glass
+     that blur + mute the flames behind them. */
   .why-wall {
     position: relative;
-    border: 1px solid #ffffff1a;
+    border: 1px solid #ffffff2e;
     border-radius: var(--radius);
-    padding: 1.6rem;
-    background: #ffffff08;
+    padding: 1.5rem;
     overflow: hidden;
     isolation: isolate;
-  }
-  .wall-glow {
-    position: absolute;
-    z-index: -1;
-    width: 340px;
-    height: 340px;
-    right: -110px;
-    top: -110px;
-    border-radius: 50%;
-    background: radial-gradient(circle, #ff6a3d, transparent 68%);
-    opacity: 0.35;
-    filter: blur(40px);
+    background-image:
+      linear-gradient(180deg, rgba(20, 8, 2, 0.12), rgba(20, 8, 2, 0.34)),
+      url('/photos/why-flames.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: inset 0 0 60px rgba(30, 8, 0, 0.35);
   }
   .wall-chips {
     display: flex;
@@ -189,27 +183,36 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
   }
   .wchip {
     font-size: 0.8rem;
-    color: #b9bbe0;
-    background: #ffffff0f;
-    border: 1px solid #ffffff17;
+    color: #fff;
+    background: rgba(14, 8, 10, 0.34);
+    -webkit-backdrop-filter: blur(7px) saturate(0.8);
+    backdrop-filter: blur(7px) saturate(0.8);
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 8px;
     padding: 0.3rem 0.6rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
   }
   .wchip--hot {
     color: #fff;
-    background: color-mix(in srgb, var(--ember) 24%, transparent);
-    border-color: color-mix(in srgb, var(--ember) 45%, transparent);
+    background: color-mix(in srgb, var(--ember) 30%, rgba(14, 8, 10, 0.34));
+    border-color: color-mix(in srgb, var(--ember) 62%, transparent);
   }
   .wall-cap {
     margin: 1.1rem 0 0;
     font-size: 0.74rem;
-    color: #8a8cb6;
+    color: #fff;
     letter-spacing: 0.04em;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.7);
   }
 
   @media (max-width: 900px) {
     .why-grid {
       grid-template-columns: 1fr;
+    }
+    /* The "2 a.m. · the making" photo crowds the stacked mobile layout — drop it
+       and let the fire header + the proving-ground wall carry the section. */
+    .why-photo {
+      display: none;
     }
   }
 </style>
