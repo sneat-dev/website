@@ -12,6 +12,7 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
 ---
 
 <section id="why" class="section section--ink why">
+  <div class="why-fire" aria-hidden="true"></div>
   <div class="container why-grid">
     <div class="why-copy" data-reveal>
       <p class="eyebrow">Why Sneat</p>
@@ -63,6 +64,47 @@ const highlight = new Set(['Sneat.app', 'Eventius', 'GameBoard', 'Debtus', 'Snea
 </section>
 
 <style>
+  .why {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+  /* "Forged in the fire" — a panoramic night-fire band behind the header,
+     fading into the section's ink. Prominent on mobile (base), subtler on
+     desktop (stronger overlay). */
+  .why-fire {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    height: 460px;
+    background-image:
+      linear-gradient(
+        to bottom,
+        rgba(8, 8, 20, 0.38) 0%,
+        rgba(8, 8, 20, 0.6) 52%,
+        var(--ink-950) 100%
+      ),
+      url('/photos/why-fire.jpg');
+    background-size: cover;
+    background-position: center 30%;
+    background-repeat: no-repeat;
+  }
+  @media (min-width: 901px) {
+    .why-fire {
+      height: 360px;
+      background-image:
+        linear-gradient(
+          to bottom,
+          rgba(8, 8, 20, 0.55) 0%,
+          rgba(8, 8, 20, 0.78) 55%,
+          var(--ink-950) 100%
+        ),
+        url('/photos/why-fire.jpg');
+    }
+  }
+
   .why-grid {
     display: grid;
     grid-template-columns: 1.05fr 0.95fr;
