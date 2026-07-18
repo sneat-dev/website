@@ -41,7 +41,7 @@ Used as faint, desaturated background textures behind each tool card.
 | File | Tool | Photographer | Source (canonical) | License |
 |------|------|--------------|--------------------|---------|
 | `photos/tools/specscore.jpg` | SpecScore | Shubham Dhage | https://unsplash.com/photos/OHepXopzU6Y | Unsplash License |
-| `photos/tools/modelspec.jpg` | ModelSpec | Logan Voss | https://unsplash.com/photos/NPFQMhmU94E | Unsplash License |
+| `photos/tools/modelspec.jpg` | ModelSpec | Logan Voss | https://unsplash.com/photos/j3pdBwNOTio | Unsplash License |
 | `photos/tools/graphspec.jpg` | GraphSpec | BoliviaInteligente | https://unsplash.com/photos/s5C_4tMY8fA | Unsplash License |
 | `photos/tools/codegrapher.jpg` | CodeGrapher | Pachon in Motion | https://www.pexels.com/photo/30547618/ | Pexels License |
 | `photos/tools/dtql.jpg` | DTQL | Rostislav Uzunov | https://unsplash.com/photos/Jnma4hh2vUs | Unsplash License |

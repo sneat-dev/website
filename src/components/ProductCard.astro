@@ -51,24 +51,30 @@ const bg = `/photos/tools/${product.slug}.jpg`;
     background-image: var(--card-bg);
     background-size: cover;
     background-position: center;
-    filter: saturate(0.32) brightness(1.14) contrast(0.98);
+    filter: saturate(0.24) brightness(1.18) contrast(0.97);
     transition: transform 0.4s var(--ease, ease);
   }
-  /* Near-white veil over the photo — a faint texture that lifts on hover. */
+  /* Veil over the photo — top-weighted so the image reads behind the header
+     while the denser text lower down keeps a lighter backdrop. Lifts on hover. */
   .pcard::after {
     content: '';
     position: absolute;
     inset: 0;
     z-index: 1;
-    background: color-mix(in srgb, var(--color-surface) 87%, transparent);
-    transition: background 0.28s var(--ease, ease);
+    background: linear-gradient(
+      175deg,
+      color-mix(in srgb, var(--color-surface) 66%, transparent) 0%,
+      color-mix(in srgb, var(--color-surface) 75%, transparent) 52%,
+      color-mix(in srgb, var(--color-surface) 84%, transparent) 100%
+    );
+    transition: opacity 0.28s var(--ease, ease);
   }
   .pcard > * {
     position: relative;
     z-index: 2;
   }
   .pcard:hover::after {
-    background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    opacity: 0.82;
   }
   .pcard:hover::before {
     transform: scale(1.04);
