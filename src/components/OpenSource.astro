@@ -17,7 +17,8 @@ const pillars = [
 ];
 ---
 
-<section id="open-source" class="section section--alt">
+<section id="open-source" class="section section--alt os">
+  <div class="os-bg" aria-hidden="true"></div>
   <div class="container">
     <div class="os-grid">
       <div class="os-head" data-reveal>
@@ -48,6 +49,26 @@ const pillars = [
 </section>
 
 <style>
+  .os {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* Full-bleed light background photo (window-light texture), washed to a faint
+     texture so dark text stays crisp. Warms the section without a card. */
+  .os-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+      linear-gradient(105deg,
+        color-mix(in srgb, var(--color-bg-2) 92%, transparent) 0%,
+        color-mix(in srgb, var(--color-bg-2) 82%, transparent) 55%,
+        color-mix(in srgb, var(--color-bg-2) 70%, transparent) 100%),
+      url('/photos/open-source-bg.jpg');
+    background-size: cover, cover;
+    background-position: center, center 30%;
+  }
   .os-grid {
     display: grid;
     grid-template-columns: 0.9fr 1.1fr;

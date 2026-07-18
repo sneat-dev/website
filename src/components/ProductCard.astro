@@ -8,9 +8,10 @@ interface Props {
 }
 const { product } = Astro.props;
 const killed = product.kills.map((id) => problemById(id)?.name).filter(Boolean).slice(0, 2);
+const bg = `/photos/tools/${product.slug}.jpg`;
 ---
 
-<a class="pcard card card--link" href={`/${product.slug}/`}>
+<a class="pcard card card--link" href={`/${product.slug}/`} style={`--card-bg:url('${bg}')`}>
   <div class="pcard-top">
     <h3>{product.name}</h3>
     <StatusPill status={product.status} />
@@ -36,6 +37,41 @@ const killed = product.kills.map((id) => problemById(id)?.name).filter(Boolean).
     height: 100%;
     text-decoration: none;
     color: inherit;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+  }
+  /* The tool's background photo — desaturated + brightened so every card reads
+     as the same neutral texture regardless of the source photo's colour. */
+  .pcard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background-image: var(--card-bg);
+    background-size: cover;
+    background-position: center;
+    filter: saturate(0.32) brightness(1.14) contrast(0.98);
+    transition: transform 0.4s var(--ease, ease);
+  }
+  /* Near-white veil over the photo — a faint texture that lifts on hover. */
+  .pcard::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: color-mix(in srgb, var(--color-surface) 87%, transparent);
+    transition: background 0.28s var(--ease, ease);
+  }
+  .pcard > * {
+    position: relative;
+    z-index: 2;
+  }
+  .pcard:hover::after {
+    background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+  }
+  .pcard:hover::before {
+    transform: scale(1.04);
   }
   .pcard:hover {
     text-decoration: none;
