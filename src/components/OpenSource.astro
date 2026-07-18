@@ -138,11 +138,35 @@ const pillars = [
   }
 
   @media (max-width: 760px) {
+    /* The photo always shows its full height here (narrow box vs. landscape
+       photo means cover scales off height) — kite sits ~18% down, the rider
+       ~50% down, and everything below that is open water. So instead of
+       centering the text over the rider, push it to the bottom, into the
+       water, and give the box enough height that the text block doesn't
+       reach back up into the kite/rider band. Flip the photo too, per
+       request — mirrors the rider off dead-center. */
+    .os-hero {
+      min-height: clamp(560px, 155vw, 700px);
+      align-items: flex-end;
+      padding-block: 1.5rem 2.1rem;
+    }
+    .os-hero-bg {
+      transform: scaleX(-1);
+    }
     .os-hero-inner > * {
       max-width: none;
     }
-    .os-hero-bg {
-      background-position: center 42%;
+    .os-cta {
+      flex-wrap: nowrap;
+      gap: 0.4rem;
+    }
+    .os-cta .btn {
+      flex: 0 1 auto;
+      min-width: 0;
+      justify-content: center;
+      text-align: center;
+      padding: 0.6rem 0.5rem;
+      font-size: 0.76rem;
     }
     .os-pillars-row {
       grid-template-columns: 1fr;
