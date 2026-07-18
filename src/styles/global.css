@@ -277,6 +277,17 @@ code {
   --nav-border: transparent;
 }
 
+/* ── Footer: brand + all three link groups on one row ─────────────────────────
+   The shared @sneat/astro Footer's grid is `2fr 1fr 1fr` (sized for two link
+   groups); we ship three (Platform · Tools · Ecosystem), so Ecosystem wrapped.
+   Higher specificity than the scoped rule, so this wins regardless of order. */
+@media (min-width: 720px) {
+  .site-footer .container.cols {
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-4);
+  }
+}
+
 /* ── Reveal-on-scroll (progressive, no-JS safe) ───────────────────────────── */
 [data-reveal] {
   opacity: 0;
