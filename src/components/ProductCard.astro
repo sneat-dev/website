@@ -1,5 +1,5 @@
 ---
-import type { Product } from '../data/products';
+import { productPath, type Product } from '../data/products';
 import { problemById } from '../data/problems';
 import StatusPill from './StatusPill.astro';
 
@@ -29,7 +29,7 @@ const theme = THEME[product.slug] ?? { bg: '#101020', ac: '#8b8bff' };
 
 <a
   class="pcard"
-  href={`/${product.slug}/`}
+  href={productPath(product)}
   style={`--tc-bg:${theme.bg};--tc-ac:${theme.ac}`}
 >
   <div class="pcard-bar">

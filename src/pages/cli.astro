@@ -4,7 +4,7 @@ import PageHead from '../components/PageHead.astro';
 import Terminal from '../components/Terminal.astro';
 import RevealScript from '../components/RevealScript.astro';
 import { SITE } from '../config';
-import { productBySlug } from '../data/products';
+import { productBySlug, productPath } from '../data/products';
 
 const wb = productBySlug('wb')!;
 
@@ -80,15 +80,15 @@ const tools = [
   <section class="section section--alt">
     <div class="container wb-band" data-reveal>
       <div class="wb-copy">
-        <p class="eyebrow">Coming next · WB</p>
+        <p class="eyebrow">WB · the Workbench</p>
         <h2>And a workbench for the fleet.</h2>
         <p class="lead">
-          <b>WB</b> is a different beast from the Sneat CLI: the workbench{' '}
+          <b>WB</b> is a different beast from the Sneat CLI: the Workbench{' '}
           <em>CLI</em> for fleet-wide operations across your GitHub repos — keep
           every local clone in sync, and run config-driven recipes across every
-          repo that matches, in parallel. It’s moving into <code>sneat-dev</code>.
+          repo that matches, in parallel.
         </p>
-        <a class="btn btn-ghost" href={wb.repo} rel="noopener" target="_blank">Watch it take shape ↗</a>
+        <a class="btn btn-ghost" href={productPath(wb)}>Open the Workbench →</a>
       </div>
       <div class="wb-tools">
         <p class="wb-tools-h mono">Adopt a tool today</p>

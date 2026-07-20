@@ -1,5 +1,5 @@
 ---
-import { LAYERS, productsInLayer } from '../data/products';
+import { LAYERS, productPath, productsInLayer } from '../data/products';
 
 const COLOR: Record<string, string> = {
   specify: '#5b53f0',
@@ -41,7 +41,7 @@ const chaos = ['stale wiki', '// TODO(later)', 'six repos', 'that Slack thread',
             </div>
             <div class="layer-products">
               {productsInLayer(layer.id).map((p) => (
-                <a class="pchip" href={`/${p.slug}/`} data-soon={p.status === 'coming-soon' ? 'true' : undefined}>
+                <a class="pchip" href={productPath(p)} data-soon={p.status === 'coming-soon' ? 'true' : undefined}>
                   {p.name}
                 </a>
               ))}
@@ -60,7 +60,7 @@ const chaos = ['stale wiki', '// TODO(later)', 'six repos', 'that Slack thread',
         </div>
         <div class="layer-products">
           {wbProducts.map((p) => (
-            <a class="pchip pchip--base" href={`/${p.slug}/`}>{p.name}</a>
+            <a class="pchip pchip--base" href={productPath(p)}>{p.name}</a>
           ))}
         </div>
       </div>

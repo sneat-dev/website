@@ -1,0 +1,2 @@
+/wb /workbench/ 301
+/wb/* /workbench/:splat 301

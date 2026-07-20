@@ -8,6 +8,7 @@ import {
   PRODUCTS,
   productsInLayer,
   layerById,
+  productPath,
   STATUS_LABEL,
   type Product,
 } from '../../data/products';
@@ -15,7 +16,7 @@ import { problemById } from '../../data/problems';
 
 export function getStaticPaths() {
   return PRODUCTS.map((product) => ({
-    params: { product: product.slug },
+    params: { product: product.route ?? product.slug },
     props: { product },
   }));
 }
@@ -29,7 +30,7 @@ const related = productsInLayer(product.layer).filter((p) => p.slug !== product.
 const kills = product.kills.map((id) => problemById(id)).filter((p) => p !== undefined);
 const isSoon = product.status === 'coming-soon';
 
-const docsHref = product.docs ?? (product.home ?? `/${product.slug}/docs/`);
+const docsHref = product.docs ?? (product.home ?? `${productPath(product)}docs/`);
 const primary = product.docs
   ? { href: product.docs, label: 'Read the docs', ext: true }
   : product.home
@@ -100,7 +101,7 @@ if (product.repo) meta.push({ k: 'Source', v: 'GitHub', href: product.repo });
             <p>
               Full docs are coming. For now, the specification and source live on{' '}
               <a href={product.repo ?? '/products/'} rel="noopener" target="_blank">GitHub ↗</a>,
-              and <a href={`/${product.slug}/docs/`}>this page</a> will grow into the docs home.
+              and <a href={`${productPath(product)}docs/`}>this page</a> will grow into the docs home.
             </p>
           )}
         </div>
