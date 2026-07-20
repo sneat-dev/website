@@ -4,7 +4,7 @@ import PageHead from '../components/PageHead.astro';
 import RevealScript from '../components/RevealScript.astro';
 import StatusPill from '../components/StatusPill.astro';
 import { PROBLEMS, IDEA_TO_SHIP } from '../data/problems';
-import { productBySlug, layerById } from '../data/products';
+import { productBySlug, productPath, layerById } from '../data/products';
 ---
 
 <BaseLayout
@@ -35,7 +35,7 @@ import { productBySlug, layerById } from '../data/products';
                   const prod = productBySlug(slug);
                   if (!prod) return null;
                   return (
-                    <a class="tool card card--link" href={`/${prod.slug}/`}>
+                    <a class="tool card card--link" href={productPath(prod)}>
                       <span class="tool-name">{prod.name}</span>
                       <StatusPill status={prod.status} />
                       <span class="tool-tag">{prod.tagline}</span>

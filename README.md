@@ -32,7 +32,7 @@ src/
   layouts/BaseLayout.astro   Thin wrapper over @sneat/astro's BaseLayout
   components/          Homepage + shared sections
   pages/               Home, /products, /specs, /open-source, /problems, /cli,
-                       and top-level per-product pages (/wb, /codegrapher, …)
+                       and top-level per-product pages (/workbench, /codegrapher, …)
 ```
 
 ## Develop

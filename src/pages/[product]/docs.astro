@@ -2,11 +2,11 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../../components/PageHead.astro';
 import RevealScript from '../../components/RevealScript.astro';
-import { PRODUCTS, layerById, type Product } from '../../data/products';
+import { PRODUCTS, layerById, productPath, type Product } from '../../data/products';
 
 export function getStaticPaths() {
   return PRODUCTS.map((product) => ({
-    params: { product: product.slug },
+    params: { product: product.route ?? product.slug },
     props: { product },
   }));
 }
@@ -26,7 +26,7 @@ const canonical = product.docs ?? product.home;
 >
   <PageHead eyebrow={`${product.name} · docs`} title={`${product.name} documentation`}>
     <div class="d-actions">
-      <a class="btn btn-ghost" href={`/${product.slug}/`}>← {product.name} overview</a>
+      <a class="btn btn-ghost" href={productPath(product)}>← {product.name} overview</a>
     </div>
   </PageHead>
 
@@ -59,7 +59,7 @@ const canonical = product.docs ?? product.home;
                 </li>
               )}
               <li>
-                <b>What it does</b> — <a href={`/${product.slug}/`}>the {product.name} overview</a>
+                  <b>What it does</b> — <a href={productPath(product)}>the {product.name} overview</a>
               </li>
               <li>
                 <b>Where it fits</b> — <a href="/#stack">the context stack</a>

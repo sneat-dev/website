@@ -20,8 +20,10 @@ export interface Layer {
 }
 
 export interface Product {
-  /** Top-level route slug, e.g. "wb" → /wb/. */
+  /** Stable product key and short label, e.g. "wb" for the WB CLI. */
   slug: string;
+  /** Human-readable top-level route when it differs from the product key. */
+  route?: string;
   name: string;
   layer: LayerId;
   status: Status;
@@ -224,20 +226,24 @@ export const PRODUCTS: Product[] = [
   // ── Workbench ────────────────────────────────────────────────────────────
   {
     slug: 'wb',
+    route: 'workbench',
     name: 'WB',
     layer: 'workbench',
-    status: 'coming-soon',
+    status: 'beta',
     tagline: 'Fleet-wide ops for all your repos.',
     blurb:
-      'The workbench CLI for fleet-wide operations across your GitHub repositories: keep every local clone in sync with GitHub, and run config-driven recipes across every repo that matches — in parallel, with a live progress UI. WB is moving into sneat-dev.',
+      'WB — the Workbench CLI for fleet-wide operations across your GitHub repositories: keep every local clone in sync with GitHub, and run config-driven recipes across every repo that matches — in parallel, with a live progress UI.',
     kills: ['chaos', 'complexity'],
-    repo: 'https://github.com/sneat-dev',
+    repo: 'https://github.com/sneat-dev/wb',
     kind: 'Go CLI · sync + recipes',
   },
 ];
 
 export const productBySlug = (slug: string): Product | undefined =>
   PRODUCTS.find((p) => p.slug === slug);
+
+export const productPath = (product: Product): string =>
+  `/${product.route ?? product.slug}/`;
 
 export const productsInLayer = (id: LayerId): Product[] =>
   PRODUCTS.filter((p) => p.layer === id);
