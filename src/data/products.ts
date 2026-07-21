@@ -1,12 +1,12 @@
 /**
- * The Sneat.dev product catalogue, organised by the "context stack" — five
+ * The Sneat.dev product catalogue, organised by the "context stack" — six
  * layers named for the question each answers (ADR 0020 §4). This module is the
  * single source of truth for the homepage grid, the /products catalogue, and
  * every per-product page. Facts are drawn from each product's own README
  * (2026-07-18); keep them honest and in step with the source repos.
  */
 
-export type LayerId = 'specify' | 'understand' | 'store' | 'build' | 'workbench';
+export type LayerId = 'specify' | 'understand' | 'store' | 'build' | 'verify' | 'workbench';
 
 export type Status = 'stable' | 'beta' | 'spec' | 'coming-soon';
 
@@ -73,6 +73,13 @@ export const LAYERS: Layer[] = [
     question: 'How do we reuse it everywhere?',
     blurb:
       'Define a model or a behaviour once and project it across languages, storage engines and platforms — so context compounds instead of forking.',
+  },
+  {
+    id: 'verify',
+    name: 'Verify',
+    question: 'Does the software do what it promises?',
+    blurb:
+      'Turn specifications and platform contracts into executable proof — run real checks, emulate external systems locally, and inspect what actually happened.',
   },
   {
     id: 'workbench',
@@ -221,6 +228,35 @@ export const PRODUCTS: Product[] = [
     home: 'https://github.com/bots-go-framework',
     repo: 'https://github.com/bots-go-framework',
     kind: 'Go framework',
+  },
+
+  // ── Verify ───────────────────────────────────────────────────────────────
+  {
+    slug: 'chatwright',
+    name: 'Chatwright',
+    layer: 'verify',
+    status: 'beta',
+    tagline: 'Chat platforms, faithfully emulated.',
+    blurb:
+      'The open-source local runtime for deterministic conversational-app testing. Write one platform-neutral scenario; Chatwright emulates Telegram or WhatsApp APIs, drives a real bot over HTTP, and captures its replies and latency.',
+    kills: ['chaos', 'complexity'],
+    home: 'https://chatwright.dev',
+    repo: 'https://github.com/chatwright/cli',
+    kind: 'Go CLI + test runtime',
+  },
+  {
+    slug: 'rehearse',
+    name: 'Rehearse',
+    layer: 'verify',
+    status: 'beta',
+    tagline: 'Run your specs. Prove the promises.',
+    blurb:
+      'Turns Markdown scenarios into executable bash, SQL and HTTP checks that prove software does what its documentation promises — without glue code or mocks.',
+    kills: ['doc-rot', 'chaos'],
+    home: 'https://rehearse.ink/',
+    repo: 'https://github.com/specscore/rehearse',
+    docs: 'https://specscore.md/rehearse',
+    kind: 'Executable Markdown scenarios',
   },
 
   // ── Workbench ────────────────────────────────────────────────────────────
