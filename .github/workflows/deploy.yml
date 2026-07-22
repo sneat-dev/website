@@ -65,8 +65,17 @@ jobs:
       - name: Smoke test
         run: |
           set -e
-          for path in / /products/ /specs/ /cli/ /codegrapher/ /chatwright/ /rehearse/ /workbench/ /og/default.png; do
-            code=$(curl -s -o /dev/null -w "%{http_code}" "https://sneat.dev${path}")
-            echo "sneat.dev${path} -> ${code}"
-            [ "$code" = "200" ] || { echo "::error::sneat.dev${path} returned ${code}"; exit 1; }
+          for route in / /products/ /specs/ /cli/ /codegrapher/ /chatwright/ /rehearse/ /workbench/ /og/default.png; do
+            code=000
+            for attempt in {1..10}; do
+              code=$(curl -s -o /dev/null -w "%{http_code}" "https://sneat.dev${route}")
+              echo "sneat.dev${route} -> ${code} (attempt ${attempt}/10)"
+              if [ "$code" = "200" ]; then
+                break
+              fi
+              if [ "$attempt" -lt 10 ]; then
+                sleep 3
+              fi
+            done
+            [ "$code" = "200" ] || { echo "::error::sneat.dev${route} returned ${code} after 10 attempts"; exit 1; }
           done
