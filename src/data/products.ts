@@ -241,7 +241,7 @@ export const PRODUCTS: Product[] = [
       'The open-source local runtime for deterministic conversational-app testing. Write one platform-neutral scenario; Chatwright emulates Telegram or WhatsApp APIs, drives a real bot over HTTP, and captures its replies and latency.',
     kills: ['chaos', 'complexity'],
     home: 'https://chatwright.dev',
-    repo: 'https://github.com/chatwright/cli',
+    repo: 'https://github.com/chatwright/chatwright',
     kind: 'Go CLI + test runtime',
   },
   {
