@@ -36,6 +36,9 @@ concurrency:
 jobs:
   deploy:
     name: Production deploy
+    # workflow_dispatch exposes a branch selector; never let a manually selected
+    # feature branch reach the production Cloudflare worker.
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
