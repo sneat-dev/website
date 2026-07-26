@@ -5,8 +5,8 @@ name: Deploy to Cloudflare
 # Self-contained (no cross-org reusable
 # workflow) so it runs regardless of the sneat-dev org Actions allowlist: only
 # GitHub-authored actions (checkout, setup-node) plus `wrangler deploy` via the
-# repo's own devDependency. Auth: CLOUDFLARE_API_TOKEN repo secret +
-# CLOUDFLARE_ACCOUNT_ID repo variable (an identifier, not a secret).
+# repo's own devDependency. The production environment records deployment
+# history and scopes the Cloudflare credentials used by this job.
 #
 # The apex sneat.dev is attached to the `sneat-dev-website` worker as a
 # Cloudflare Custom Domain (managed out-of-band via the API), so a successful
@@ -36,6 +36,12 @@ concurrency:
 jobs:
   deploy:
     name: Production deploy
+    # workflow_dispatch exposes a branch selector; never let a manually selected
+    # feature branch reach the production Cloudflare worker.
+    if: github.ref == 'refs/heads/main'
+    environment:
+      name: production
+      url: https://sneat.dev
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
