@@ -268,10 +268,12 @@ export const PRODUCTS: Product[] = [
     status: 'beta',
     tagline: 'Fleet-wide ops for all your repos.',
     blurb:
-      'WB — the Workbench CLI for fleet-wide operations across your GitHub repositories: keep every local clone in sync with GitHub, and run config-driven recipes across every repo that matches — in parallel, with a live progress UI.',
+      'WB — the Workbench CLI for fleet-wide operations across your GitHub repositories: sync clones, land repeatable changes, coordinate source and dependency migrations, verify quality, audit CI, inspect local status, and keep Git hooks consistent.',
     kills: ['chaos', 'complexity'],
+    home: 'https://wb.sneat.dev',
+    docs: 'https://wb.sneat.dev/#commands',
     repo: 'https://github.com/sneat-dev/wb',
-    kind: 'Go CLI · sync + recipes',
+    kind: 'Go CLI · fleet operations',
   },
 ];
 
