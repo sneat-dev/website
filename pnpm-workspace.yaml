@@ -7,4 +7,4 @@ allowBuilds:
   workerd: true
 # @sneat/astro was just published; exclude it from the minimum-release-age gate.
 minimumReleaseAgeExclude:
-  - '@sneat/astro@0.1.0'
+  - '@sneat/astro@0.2.1'
