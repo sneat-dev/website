@@ -49,7 +49,7 @@ export function getChrome(): SiteChrome {
             { href: '/specscore/', label: 'SpecScore' },
             { href: '/codegrapher/', label: 'CodeGrapher' },
             { href: '/ingitdb/', label: 'inGitDB' },
-            { href: '/polymodel/', label: 'PolyModel' },
+            { href: '/modelspec/', label: 'ModelSpec' },
             { href: '/dalgo/', label: 'DALgo' },
             { href: '/products/', label: 'All tools →' },
           ],
