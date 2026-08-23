@@ -191,17 +191,17 @@ export const PRODUCTS: Product[] = [
 
   // ── Build ────────────────────────────────────────────────────────────────
   {
-    slug: 'polymodel',
-    name: 'PolyModel',
+    slug: 'modelspec',
+    name: 'ModelSpec',
     layer: 'build',
-    status: 'beta',
-    tagline: 'Define once. Generate everywhere.',
+    status: 'spec',
+    tagline: 'Define your application data model once.',
     blurb:
-      'An open spec and projection engine: one canonical data model projects into database schemas, transport contracts and language types — Postgres, SQLite, Go, and beyond.',
+      'An open specification language for application data models. It describes the logical model of an application independently of storage engines, programming languages, API layers and deployment platforms — so a schema, a contract and a type become projections of your model rather than four places it lives.',
     kills: ['reuse', 'fragmentation'],
-    home: 'https://polymodel.org',
-    docs: 'https://polymodel.org',
-    kind: 'Spec + code generation',
+    home: 'https://modelspec.org',
+    docs: 'https://github.com/specscore/modelspec',
+    kind: 'Open specification',
   },
   {
     slug: 'dalgo',
