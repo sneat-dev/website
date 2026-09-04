@@ -270,8 +270,8 @@ export const PRODUCTS: Product[] = [
     blurb:
       'WB — the Workbench CLI for fleet-wide operations across your GitHub repositories: sync clones, land repeatable changes, coordinate source and dependency migrations, verify quality, audit CI, inspect local status, and keep Git hooks consistent.',
     kills: ['chaos', 'complexity'],
-    home: 'https://wb.sneat.dev',
-    docs: 'https://wb.sneat.dev/#commands',
+    home: 'https://sneat.work/bench/',
+    docs: 'https://sneat.work/bench/#commands',
     repo: 'https://github.com/sneat-dev/wb',
     kind: 'Go CLI · fleet operations',
   },
