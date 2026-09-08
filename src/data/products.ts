@@ -161,6 +161,22 @@ export const PRODUCTS: Product[] = [
     docs: 'https://dtql.org',
     kind: 'Open query language',
   },
+  {
+    // Placed beside DTQL because it is the surface that reads what DTQL and
+    // DataTug return. It is a product rather than a developer tool, so if this
+    // catalogue should stay strictly tools, this entry is the one to drop.
+    slug: 'dashboardius',
+    name: 'Dashboardius',
+    layer: 'understand',
+    status: 'beta',
+    tagline: 'Any data. Your metrics. One view.',
+    blurb:
+      'Dashboards over the data DataTug already reaches. A board is literally a DataTug board — same JSON, no second schema — so changing a query changes every card that reads it. The homepage is itself a working board.',
+    kills: ['fragmentation', 'chaos'],
+    home: 'https://dashboardius.com',
+    repo: 'https://github.com/sneat-co/dashboardius',
+    kind: 'Angular + PrimeNG app',
+  },
 
   // ── Store ────────────────────────────────────────────────────────────────
   {
