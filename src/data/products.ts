@@ -278,7 +278,7 @@ export const PRODUCTS: Product[] = [
   // ── Workbench ────────────────────────────────────────────────────────────
   {
     slug: 'wb',
-    route: 'workbench',
+    route: 'wb',
     name: 'WB',
     layer: 'workbench',
     status: 'beta',
@@ -286,8 +286,8 @@ export const PRODUCTS: Product[] = [
     blurb:
       'WB — the Workbench CLI for fleet-wide operations across your GitHub repositories: sync clones, land repeatable changes, coordinate source and dependency migrations, verify quality, audit CI, inspect local status, and keep Git hooks consistent.',
     kills: ['chaos', 'complexity'],
-    home: 'https://sneat.work/bench',
-    docs: 'https://sneat.work/bench#commands',
+    home: 'https://sneat.dev/wb',
+    docs: 'https://sneat.dev/wb#commands',
     repo: 'https://github.com/sneat-dev/wb',
     kind: 'Go CLI · fleet operations',
   },
@@ -297,7 +297,7 @@ export const productBySlug = (slug: string): Product | undefined =>
   PRODUCTS.find((p) => p.slug === slug);
 
 export const productPath = (product: Product): string =>
-  `/${product.route ?? product.slug}/`;
+  product.slug === 'wb' ? '/wb' : `/${product.route ?? product.slug}/`;
 
 export const productsInLayer = (id: LayerId): Product[] =>
   PRODUCTS.filter((p) => p.layer === id);
