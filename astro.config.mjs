@@ -12,5 +12,5 @@ export default defineConfig({
   site: SITE_URL,
   trailingSlash: 'always',
   build: { format: 'directory' },
-  integrations: [sitemap()],
+  integrations: [sitemap({ customPages: ['https://sneat.dev/wb'] })],
 });
