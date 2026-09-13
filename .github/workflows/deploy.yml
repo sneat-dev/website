@@ -71,7 +71,7 @@ jobs:
       - name: Smoke test
         run: |
           set -e
-          for route in / /products/ /specs/ /cli/ /codegrapher/ /chatwright/ /rehearse/ /workbench/ /og/default.png; do
+          for route in / /products/ /specs/ /cli/ /codegrapher/ /chatwright/ /rehearse/ /wb /og/default.png; do
             code=000
             for attempt in {1..10}; do
               code=$(curl -s -o /dev/null -w "%{http_code}" "https://sneat.dev${route}")
@@ -85,3 +85,7 @@ jobs:
             done
             [ "$code" = "200" ] || { echo "::error::sneat.dev${route} returned ${code} after 10 attempts"; exit 1; }
           done
+          legacy_status=$(curl --silent --show-error --output /dev/null --write-out '%{http_code}' 'https://sneat.dev/workbench/?source=deploy-smoke')
+          legacy_location=$(curl --silent --show-error --output /dev/null --write-out '%{redirect_url}' 'https://sneat.dev/workbench/?source=deploy-smoke')
+          [ "$legacy_status" = "308" ]
+          [ "$legacy_location" = "https://sneat.dev/wb?source=deploy-smoke" ]
