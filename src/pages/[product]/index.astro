@@ -15,7 +15,7 @@ import {
 import { problemById } from '../../data/problems';
 
 export function getStaticPaths() {
-  return PRODUCTS.map((product) => ({
+  return PRODUCTS.filter((product) => product.slug !== 'wb').map((product) => ({
     params: { product: product.route ?? product.slug },
     props: { product },
   }));
