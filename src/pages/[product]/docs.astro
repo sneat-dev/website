@@ -2,10 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHead from '../../components/PageHead.astro';
 import RevealScript from '../../components/RevealScript.astro';
-import { PRODUCTS, layerById, productPath, type Product } from '../../data/products';
+import { PRODUCTS, COMPATIBILITY_PRODUCTS, layerById, productPath, type Product } from '../../data/products';
 
 export function getStaticPaths() {
-  return PRODUCTS.filter((product) => product.slug !== 'wb').map((product) => ({
+  return [...PRODUCTS, ...COMPATIBILITY_PRODUCTS].filter((product) => product.slug !== 'wb').map((product) => ({
     params: { product: product.route ?? product.slug },
     props: { product },
   }));
@@ -32,6 +32,9 @@ const canonical = product.docs ?? product.home;
 
   <section class="section">
     <div class="container-narrow d-body" data-reveal>
+      {product.slug === 'modelspec' && (
+        <p>ModelSpec is a technical format for logical model definitions within <a href="/meaninggraph/">MeaningGraph</a>. Links to shared meanings are optional.</p>
+      )}
       {
         canonical ? (
           <>
