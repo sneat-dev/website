@@ -40,9 +40,10 @@ export const SITE = {
   sneatCliInstall: 'go install github.com/sneat-co/sneat-cli/cmd/sneat@latest',
 
   /**
-   * GA4 measurement id, or null for no analytics. No sneat.dev property is
-   * provisioned yet — kept null so the tag isn't loaded to do nothing. Wire a
-   * real id here once one exists (canonical map: sneat-ops/data/ga-properties.json).
+   * GA4 measurement id, or null for no analytics. This is the sneat.dev GA4
+   * property (554119770); canonical map: sneat-ops/data/ga-properties.json.
+   * Loaded by @sneat/astro's GoogleAnalytics: Consent Mode v2, denied by default
+   * and granted only outside the EEA/UK; no personal data, no user id.
    */
-  gaId: null as string | null,
+  gaId: 'G-H9F2FDYBHV' as string | null,
 } as const;
