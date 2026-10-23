@@ -110,17 +110,17 @@ export const PRODUCTS: Product[] = [
     kind: 'Spec format + methodology',
   },
   {
-    slug: 'modelspec',
-    name: 'ModelSpec',
+    slug: 'meaninggraph',
+    name: 'MeaningGraph',
     layer: 'specify',
     status: 'beta',
-    tagline: 'Define your data model once.',
+    tagline: 'Shared models. Shared meaning.',
     blurb:
-      'An open specification language for application data models — the logical model, independent of storage engine, programming language, API layer or deployment platform.',
+      'An open registry for logical data models and semantic definitions: domain concepts, entities and vocabularies. Models can stand alone or optionally link to shared meanings; ModelSpec is a technical format for model definitions.',
     kills: ['fragmentation', 'own-data'],
-    home: 'https://github.com/specscore/modelspec',
-    repo: 'https://github.com/specscore/modelspec',
-    kind: 'Specification language',
+    home: 'https://meaninggraph.io',
+    docs: 'https://meaninggraph.io',
+    kind: 'Open model and meaning registry',
   },
   {
     slug: 'graphspec',
@@ -207,19 +207,6 @@ export const PRODUCTS: Product[] = [
 
   // ── Build ────────────────────────────────────────────────────────────────
   {
-    slug: 'modelspec',
-    name: 'ModelSpec',
-    layer: 'build',
-    status: 'spec',
-    tagline: 'Define your application data model once.',
-    blurb:
-      'An open specification language for application data models. It describes the logical model of an application independently of storage engines, programming languages, API layers and deployment platforms — so a schema, a contract and a type become projections of your model rather than four places it lives.',
-    kills: ['reuse', 'fragmentation'],
-    home: 'https://modelspec.org',
-    docs: 'https://github.com/specscore/modelspec',
-    kind: 'Open specification',
-  },
-  {
     slug: 'dalgo',
     name: 'DALgo',
     layer: 'build',
@@ -293,8 +280,27 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+/** Technical pages retained for existing links, outside the public catalogue. */
+export const COMPATIBILITY_PRODUCTS: Product[] = [
+  {
+    slug: 'modelspec',
+    name: 'ModelSpec',
+    layer: 'specify',
+    status: 'spec',
+    tagline: 'A technical format for logical data models.',
+    blurb:
+      'ModelSpec describes logical data models independently of storage engines, programming languages and API layers. Within MeaningGraph, it is a format for structural definitions; links to shared semantic definitions are optional.',
+    kills: [],
+    home: 'https://modelspec.org',
+    docs: 'https://github.com/specscore/modelspec',
+    repo: 'https://github.com/specscore/modelspec',
+    kind: 'Logical model format',
+  },
+];
+
 export const productBySlug = (slug: string): Product | undefined =>
-  PRODUCTS.find((p) => p.slug === slug);
+  PRODUCTS.find((p) => p.slug === slug) ??
+  COMPATIBILITY_PRODUCTS.find((p) => p.slug === slug);
 
 export const productPath = (product: Product): string =>
   product.slug === 'wb' ? '/wb' : `/${product.route ?? product.slug}/`;

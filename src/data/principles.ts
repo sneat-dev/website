@@ -26,7 +26,7 @@ export const PRINCIPLES: Principle[] = [
   },
   {
     title: 'Standards before implementations',
-    body: 'We write the spec first — SpecScore, ModelSpec, DTQL — then implement it. Open formats outlive any one tool, ours included.',
+    body: 'We write the spec first — SpecScore, ModelSpec (within MeaningGraph), DTQL — then implement it. Open formats outlive any one tool, ours included.',
     photo: '/photos/principles/blueprint.jpg',
     alt: 'Hands drafting a technical drawing with a pencil and ruler',
   },

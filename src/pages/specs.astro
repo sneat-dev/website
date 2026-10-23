@@ -5,13 +5,13 @@ import ProductCard from '../components/ProductCard.astro';
 import RevealScript from '../components/RevealScript.astro';
 import { productBySlug } from '../data/products';
 
-const modelspec = productBySlug('modelspec')!;
+const meaninggraph = productBySlug('meaninggraph')!;
 const graphspec = productBySlug('graphspec')!;
 ---
 
 <BaseLayout
-  title="Specs — SpecScore, ModelSpec & GraphSpec — Sneat.dev"
-  description="The specification layer of the Sneat toolkit. SpecScore is the open spec format and methodology; ModelSpec and GraphSpec extend the family to data models and architecture."
+  title="Specs — SpecScore, MeaningGraph & GraphSpec — Sneat.dev"
+  description="The specification layer of the Sneat toolkit. SpecScore is the open spec format and methodology; MeaningGraph provides the open registry for logical data models and semantic definitions; GraphSpec describes architecture."
 >
   <PageHead
     eyebrow="Specifications"
@@ -44,16 +44,16 @@ const graphspec = productBySlug('graphspec')!;
     </div>
   </section>
 
-  <!-- The rest of the family -->
+  <!-- Models, meanings and architecture -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-head" data-reveal>
-        <p class="eyebrow">The SpecScore family</p>
+        <p class="eyebrow">Models, meanings &amp; architecture</p>
         <h2>Same idea, more surfaces.</h2>
-        <p>SpecScore proved that structured intent beats prose. ModelSpec and GraphSpec carry the idea into your data models and your architecture.</p>
+        <p>MeaningGraph brings logical data models and shared semantic definitions into one open registry. Models may optionally link to meanings. <a href="/modelspec/">ModelSpec</a> remains a technical model format; GraphSpec describes architecture.</p>
       </div>
       <div class="fam-grid">
-        <ProductCard product={modelspec} />
+        <ProductCard product={meaninggraph} />
         <ProductCard product={graphspec} />
       </div>
     </div>
