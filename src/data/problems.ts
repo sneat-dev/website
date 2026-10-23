@@ -36,7 +36,7 @@ export const PROBLEMS: Problem[] = [
     name: 'Context fragmentation',
     line: 'The truth is scattered across a wiki, a Slack thread, six repos and someone’s memory. Nobody holds all of it.',
     layer: 'understand',
-    killedBy: ['dtql', 'codegrapher', 'ingitdb'],
+    killedBy: ['tugql', 'codegrapher', 'ingitdb'],
     photo: '/photos/problems/fragmentation.jpg',
     alt: 'Scattered scraps of paper and notes strewn apart',
   },

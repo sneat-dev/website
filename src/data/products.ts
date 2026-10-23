@@ -149,20 +149,20 @@ export const PRODUCTS: Product[] = [
     kind: 'Go · single static binary',
   },
   {
-    slug: 'dtql',
-    name: 'DTQL',
+    slug: 'tugql',
+    name: 'TugQL',
     layer: 'understand',
     status: 'beta',
     tagline: 'One query language for every data shape.',
     blurb:
       'An open, YAML-based query language for relational, document, API and graph-connected data. Ask one kind of question across many kinds of source.',
     kills: ['fragmentation', 'ai-context'],
-    home: 'https://dtql.org',
-    docs: 'https://dtql.org',
+    home: 'https://tugql.org',
+    docs: 'https://tugql.org',
     kind: 'Open query language',
   },
   {
-    // Placed beside DTQL because it is the surface that reads what DTQL and
+    // Placed beside TugQL because it is the surface that reads what TugQL and
     // DataTug return. It is a product rather than a developer tool, so if this
     // catalogue should stay strictly tools, this entry is the one to drop.
     slug: 'dashboardius',
