@@ -40,6 +40,7 @@ export function getChrome(): SiteChrome {
             { href: '/specs/', label: 'Specs' },
             { href: '/problems/', label: 'Problems' },
             { href: '/open-source/', label: 'Open Source' },
+            { href: '/about/tech-stack/', label: 'Tech stack' },
             { href: SITE.cliHref, label: 'Try the CLI' },
           ],
         },

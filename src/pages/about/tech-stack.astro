@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHead from '../../components/PageHead.astro';
+
+const url = 'https://sneat.dev/about/tech-stack/';
+const jsonld = [
+  { '@context': 'https://schema.org', '@type': 'AboutPage', name: 'How Sneat.dev is built', url, description: 'The tools behind the Sneat developer tools website.' },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://sneat.dev/' },
+    { '@type': 'ListItem', position: 2, name: 'Tech stack', item: url },
+  ] },
+];
+---
+
+<BaseLayout title="How Sneat.dev is built — tech stack" description="Astro, shared Sneat platform components and Cloudflare behind the Sneat developer tools website.">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonld)} />
+  <PageHead
+    eyebrow="Behind the site"
+    title="How Sneat.dev is built"
+    lead="A tech stack is the set of tools used to build and serve a product. Sneat.dev is the front door to the developer tools built while shipping the Sneat ecosystem."
+  />
+  <section class="section">
+    <div class="container content">
+      <nav aria-label="Breadcrumb"><a href="/">Home</a> / Tech stack</nav>
+      <h2>This website</h2>
+      <p>Astro turns the catalog and tool pages into static HTML. The site's shared header, footer and search-friendly metadata come from <code>@sneat/astro</code>. Cloudflare Workers serves the built files, so the catalog can be read without signing in.</p>
+
+      <h2>The product</h2>
+      <p>This site organizes tools around the problems they solve: <a href="/specs/">specifications</a>, code navigation, queries and owned data. Each tool has its own source and release cycle; Sneat.dev explains how they fit together and links visitors to the tool that addresses their next task.</p>
+
+      <h2>Our tools used here</h2>
+      <p>The <code>@sneat/astro</code> package supplies this site's common layout. <a href="/specscore/">SpecScore</a>, <a href="/codegrapher/">CodeGrapher</a>, <a href="/ingitdb/">inGitDB</a> and <a href="/dalgo/">DALgo</a> are featured products with their own implementations, rather than libraries loaded by this page.</p>
+
+      <p><strong>Related projects:</strong> <a href="https://sneat.co/">Sneat Co.</a> is the ecosystem hub; <a href="https://sneat.ai/">Sneat AI</a> shows how agent skills use these tools.</p>
+      <p class="back"><a href="/products/">Browse the tools →</a></p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .content { max-width: 780px; padding-block: 1rem 4rem; }
+  nav { font-size: .9rem; margin-bottom: 1.5rem; }
+  h2 { margin-top: 2.4rem; }
+  p { line-height: 1.7; }
+  .back { margin-top: 2.5rem; font-weight: 700; }
+</style>
