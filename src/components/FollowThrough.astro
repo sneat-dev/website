@@ -1,0 +1,23 @@
+---
+const destination = 'https://committedme.com/en/for/builders/?utm_source=sneat-dev&utm_medium=ecosystem_referral&utm_campaign=committedme_cross_promotion&utm_content=homepage_direct';
+---
+
+<section class="section section--tight section--alt" aria-labelledby="follow-through-title">
+  <div class="container follow-through">
+    <p class="eyebrow">The human part</p>
+    <h2 id="follow-through-title">Your agents have a queue. What deserves your attention?</h2>
+    <p>The toolkit helps coordinate the work. Choosing what to finish—and making time to review it—still needs you. Build a weekly rhythm that connects busy agents to a useful result.</p>
+    <div class="follow-through-links">
+      <a href="/articles/finish-what-matters/">Read the guide to finishing what matters →</a>
+      <a href={destination}>Explore CommittedMe →</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .follow-through { max-width: 62rem; }
+  .follow-through h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .follow-through p:not(.eyebrow) { max-width: 70ch; }
+  .follow-through-links { display: flex; flex-wrap: wrap; gap: 0.8rem 2rem; }
+  .follow-through-links a { padding-block: 0.3rem; }
+</style>

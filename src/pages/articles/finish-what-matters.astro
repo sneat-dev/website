@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const title = 'Your Agents Are Busy. Is Your Most Important Project Moving?';
+const description = 'A practical weekly review for technical founders: limit unfinished work, make the decisions agents cannot, and connect implementation to a useful result.';
+const canonical = 'https://sneat.dev/articles/finish-what-matters/';
+const campaign = 'utm_source=sneat-dev&utm_medium=ecosystem_referral&utm_campaign=committedme_cross_promotion';
+const destination = `https://committedme.com/en/for/builders/?${campaign}&utm_content=article_footer`;
+const mentorDestination = `https://committedme.com/en/become-a-mentor/?${campaign}&utm_content=article_mentor`;
+const schema = {
+  '@context': 'https://schema.org', '@type': 'Article',
+  headline: title, description, inLanguage: 'en',
+  mainEntityOfPage: canonical,
+  author: { '@type': 'Organization', name: 'Sneat.dev', url: 'https://sneat.dev/' },
+};
+---
+
+<BaseLayout title={`${title} — Sneat.dev`} description={description}>
+  <script is:inline slot="head" type="application/ld+json" set:html={JSON.stringify(schema).replace(/</g, '\\u003c')} />
+  <article class="section founder-guide">
+    <div class="container-narrow">
+      <nav aria-label="Breadcrumb"><a href="/">Sneat.dev</a> <span aria-hidden="true">/</span> <span>Finishing what matters</span></nav>
+      <header>
+        <p class="eyebrow">Working with AI agents</p>
+        <h1>{title}</h1>
+        <p class="intro">A queue full of finished tasks can hide a project that has stopped moving. Give the human decisions the same attention you give the automated work.</p>
+      </header>
+
+      <p>Imagine ending a week with three merged refactors, a new dashboard and a faster build. Meanwhile, the person testing your product still cannot complete the one workflow they came for. The activity is real. The missing result is real too. More implementation capacity will not necessarily close that gap.</p>
+      <p>When agents can work on several tasks at once, starting another task is easy. Choosing which result matters, resolving an awkward tradeoff and checking the experience with a real person remain your responsibility. The following routine makes those decisions visible without adding another elaborate management system.</p>
+
+      <h2>Choose a result someone can observe</h2>
+      <p>Before opening the task queue, complete this sentence: “By Friday, this person can do this thing, and I will know because of this evidence.” A useful example is: “A new user can import a sample, correct a bad column and export the result without my help. I will watch one attempt from a clean browser.”</p>
+      <p>That is more useful than “finish onboarding.” It names the person, the action and the check. Write down the smallest version that would still be valuable. If the project is research, the result might be a decision supported by three customer conversations rather than a shipped feature. Do not manufacture a software deliverable when the real uncertainty is whether anyone needs it.</p>
+      <p><a href="/specscore/">SpecScore</a> can give the software behavior a precise, reviewable form. Your weekly commitment answers a different question: which of those outcomes will receive your limited attention now?</p>
+
+      <h2>Put a limit on work awaiting your judgment</h2>
+      <p>An agent can produce a patch faster than you can evaluate its consequences. If every new patch becomes another open decision, parallel work creates a review queue rather than progress. Choose a work-in-progress limit you can actually review; for a solo founder, one primary outcome and one genuinely necessary support task is a reasonable experiment.</p>
+      <p>List the work already started before assigning anything new. For each item, decide: finish it, give it a clear place behind the current outcome, or stop it deliberately. Record enough context to resume postponed work. Do not silently abandon a collaborator or leave an agent running on a task you no longer intend to use.</p>
+      <p><a href="/wb">WB</a> helps coordinate repository work, worktrees and checks. It can make engineering state visible. It cannot decide whether the next feature deserves the next week of your life.</p>
+
+      <h2>Keep a short list of decisions only you can make</h2>
+      <p>Separate “work in progress” from “waiting for me.” A blocked task should name the decision, the options and the evidence needed. “Waiting for product direction” is too broad. “Choose whether the first release supports CSV only or also spreadsheets” is actionable.</p>
+      <p>Give each decision a time on your calendar. If you cannot choose, ask what small investigation would reduce the uncertainty. Sometimes a ten-minute conversation resolves what another implementation round cannot. Delegating that investigation is useful; delegating an undefined choice and hoping the answer feels right is not.</p>
+
+      <h2>Review evidence before the story of the week</h2>
+      <p>At the review, open the result first: the actual user journey, the recorded observation or the decision memo. Then compare it with the commitment. Commits, passing tests and agent summaries can support your judgment, but each proves a different thing. A passing unit test does not show that a first-time visitor understands the page.</p>
+      <p>Use four questions: What did I commit to? What can I show? What prevented the rest? What will I change next? Keep the answer factual. If the task was too large, reduce the next commitment. If dependencies dominated, reserve time to resolve them. If you avoided an uncomfortable decision, name it instead of hiding it behind a busier plan.</p>
+
+      <h2>Bring another person into the review</h2>
+      <p>A trusted peer or mentor can ask questions you have learned to skip. Their job is not to approve every technical choice. Ask them to listen for shifting goals, commitments larger than your available time and activity presented as an outcome.</p>
+      <p>Agree on a recurring time and a small review format. Share only the context needed; a private customer dataset or confidential repository is not required to explain a goal and its evidence. End with one next commitment and a date to revisit it. If nothing happened, use the meeting to understand why and choose a smaller honest next step.</p>
+
+      <aside class="mentor-note" aria-labelledby="mentor-note-title">
+        <h2 id="mentor-note-title">Already helping other builders learn?</h2>
+        <p>Explaining your decisions can expose assumptions you have stopped questioning. A learner asking “why?” gives you a reason to revisit a tool, test an approach and keep your understanding current while helping them grow.</p>
+        <p>If you share tutorials on YouTube or practical advice on TikTok or Instagram, mentoring can extend that teaching into a conversation about someone's own goal. It calls for listening and reliable follow-up as well as subject knowledge. <a href={mentorDestination}>Explore becoming a CommittedMe mentor →</a></p>
+      </aside>
+
+      <h2>Try one week before redesigning your whole workflow</h2>
+      <p>Write one observable outcome. Limit the unfinished work competing for it. Schedule the decisions that need you. Review the evidence with another person. After a week, keep what helped and change what did not. The point is a repeatable way to finish something useful, not another system to maintain.</p>
+      <p>CommittedMe focuses on human mentorship and accountability through regular check-ins. If that is the support missing from your development routine, start with your next goal and the question you would like a mentor to help you examine.</p>
+      <p><a class="btn btn-primary" href={destination}>Explore CommittedMe for builders →</a></p>
+      <p class="muted">CommittedMe is part of the Sneat product ecosystem. It is a separate product from the developer tools discussed here.</p>
+      <p class="related"><a href="/products/">Return to the developer toolkit</a></p>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .founder-guide { padding-top: 8rem; }
+  .founder-guide nav { font-size: 0.9rem; margin-bottom: 2rem; }
+  .founder-guide nav span { margin-left: 0.4rem; }
+  .founder-guide header { margin-bottom: 2rem; }
+  .founder-guide h1 { font-size: clamp(2.1rem, 4.8vw, 3.4rem); }
+  .founder-guide h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-top: 2.4rem; line-height: 1.2; }
+  .intro { font-size: 1.25rem; color: var(--color-text-muted); }
+  .mentor-note { border-left: 3px solid var(--color-accent); padding: 0.1rem 0 0.1rem 1.3rem; margin-block: 2.5rem; }
+  .mentor-note h2 { margin-top: 0; }
+  .related { margin-top: 2rem; }
+  .founder-guide .btn { line-height: 1.4; }
+</style>
