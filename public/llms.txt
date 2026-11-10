@@ -1,0 +1,7 @@
+# Sneat.dev
+
+Sneat.dev presents developer tools built across the Sneat ecosystem.
+
+- [Home](https://sneat.dev/)
+- [Products](https://sneat.dev/products/)
+- [Tech stack](https://sneat.dev/about/tech-stack/): how this site is built
