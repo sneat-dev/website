@@ -34,7 +34,7 @@ export const SITE = {
   /**
    * The Sneat CLI (`sneat`) — the ecosystem's command-line front door: auth,
    * chat with your spaces, and a conversational/agent runtime. PUBLIC and
-   * installable today. Distinct from WB, the developer workbench (coming soon).
+   * installable today. Distinct from WB, the developer workbench (also live: brew install --cask sneat-dev/tap/wb).
    */
   sneatCliRepo: 'https://github.com/sneat-co/sneat-cli',
   sneatCliInstall: 'go install github.com/sneat-co/sneat-cli/cmd/sneat@latest',
